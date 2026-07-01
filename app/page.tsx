@@ -48,8 +48,8 @@ export default async function HomePage() {
 
   // Eczane fotoğrafları
   const pharmacyImages = [
-    "/photos/samyeli1.jpg", "/photos/samyeli2.jpg", "/photos/samyeli3.jpg",
-    "/photos/samyeli4.jpg", "/photos/samyeli5.jpg", "/photos/samyeli6.jpg"
+    "/samyeli1.jpeg", "/samyeli2.jpeg", "/samyeli3.jpeg",
+    "/samyeli4.jpeg", "/samyeli5.jpeg", "/samyeli6.jpeg"
   ];
 
   return (
