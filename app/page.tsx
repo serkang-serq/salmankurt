@@ -20,7 +20,7 @@ async function getLatestBlogs() {
 export default async function HomePage() {
   const blogs = await getLatestBlogs();
 
-  // PARTNERLER GÜNCELLENDİ: Sadece istenen 4 marka bırakıldı
+  // PARTNERLER: Sadece istenen 4 marka bırakıldı
   const partners = [
     "Sea Drop Travel", "Denizcan Kurt", "Samyeli Eczanesi", "Erzadeoğlu Mimarlık"
   ];
@@ -55,7 +55,7 @@ export default async function HomePage() {
   return (
     <main className="bg-[#F8F8F8] min-h-screen text-[#0B2341]">
       
-      {/* 1. HERO BÖLÜMÜ - Boşluklar azaltıldı */}
+      {/* 1. HERO BÖLÜMÜ */}
       <section className="relative pt-32 pb-20 px-6 lg:px-12 flex flex-col justify-center min-h-[80vh] border-b border-[#0B2341]/5 overflow-hidden">
         <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-[#C9A227]/5 rounded-full blur-3xl -z-10 translate-x-1/4 -translate-y-1/4"></div>
         <div className="absolute left-12 top-44 bottom-32 w-[1px] bg-gradient-to-b from-[#C9A227] via-[#0B2341]/10 to-transparent hidden xl:block"></div>
@@ -75,9 +75,8 @@ export default async function HomePage() {
           
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
             <div className="max-w-2xl">
-              {/* SAĞLIK TURİZMİ METNİ ÇIKARILDI */}
               <p className="text-[#0B2341]/70 text-lg md:text-xl leading-relaxed font-light">
-                Over 30 years of cross-continental excellence spanning premium Turkish tourism, high-end hospitality, and strategic United States real estate investments.
+                Over 30 years of cross-continental excellence spanning premium Turkish tourism and strategic United States real estate investments.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 shrink-0">
@@ -92,11 +91,12 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 2. GLOBAL PARTNERS / İŞ ORTAKLARI - Boşluklar azaltıldı, 4'lü yapıya geçirildi */}
+      {/* 2. GLOBAL PARTNERS */}
       <section className="bg-white border-y border-[#0B2341]/10 py-16 px-6 lg:px-12 relative">
         <div className="max-w-[1200px] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
-            <div>
+          {/* Mobilde sola yaslama düzeltildi (items-start eklendi) */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
+            <div className="text-left w-full md:w-auto">
               <p className="text-[#C9A227] font-bold uppercase tracking-[0.2em] text-xs mb-2">Global Network</p>
               <h2 className="font-[family-name:var(--font-montserrat)] text-3xl font-black uppercase tracking-tight text-[#0B2341]">Trusted <span className="opacity-30">Partners.</span></h2>
             </div>
@@ -118,7 +118,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* İSTATİSTİK ŞERİDİ - Padding azaltıldı */}
+      {/* İSTATİSTİK ŞERİDİ */}
       <section className="bg-[#0B2341] border-b-4 border-[#C9A227] py-12 px-6">
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/10 text-center">
           <div className="px-4">
@@ -140,7 +140,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 3. SEKTÖREL HİZMETLER VE YATIRIMLAR - Boşluk azaltıldı */}
+      {/* 3. SEKTÖREL HİZMETLER VE YATIRIMLAR */}
       <section className="py-16 px-6 lg:px-12 bg-[#F8F8F8]">
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-12 text-center md:text-left">
@@ -179,7 +179,7 @@ export default async function HomePage() {
             </div>
           </div>
 
-          {/* 03: Eczane - Sağlık turizmi metni ÇIKARILDI */}
+          {/* 03: Eczane */}
           <div className="bg-white border border-[#0B2341]/5 shadow-sm hover:shadow-xl transition-all duration-700 overflow-hidden group/pharmacy">
             <div className="grid grid-cols-1 lg:grid-cols-12">
               
@@ -265,7 +265,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 4. MÜŞTERİ YORUMLARI - Boşluklar py-24'ten py-16'ya düşürüldü */}
+      {/* 4. MÜŞTERİ YORUMLARI */}
       <section className="py-16 px-6 lg:px-12 bg-[#0B2341] relative overflow-hidden">
         <div className="absolute top-0 left-1/2 w-px h-full bg-white/5"></div>
         <div className="absolute top-1/2 left-0 w-full h-px bg-white/5"></div>
@@ -298,17 +298,20 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 5. BLOG/JOURNAL BÖLÜMÜ - Padding py-32'den py-16'ya düşürüldü */}
+      {/* 5. BLOG/JOURNAL BÖLÜMÜ */}
       <section className="py-16 px-6 lg:px-12 bg-[#0B2341] border-t-4 border-[#C9A227] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-[#C9A227] via-transparent to-transparent"></div>
         
         <div className="max-w-[1200px] mx-auto relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8 border-b border-white/10 pb-8">
-            <div>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6 md:gap-8 border-b border-white/10 pb-8">
+            <div className="text-left w-full md:w-auto">
               <p className="text-[#C9A227] font-bold uppercase tracking-[0.2em] text-xs mb-3">Executive Insights</p>
-              <h2 className="font-[family-name:var(--font-montserrat)] text-4xl md:text-5xl font-black uppercase tracking-tight text-white">The Global <br/><span className="text-white/30">Journal.</span></h2>
+              <h2 className="font-[family-name:var(--font-montserrat)] text-4xl md:text-5xl font-black uppercase tracking-tight text-white">
+                The Global <br className="hidden md:block" />
+                <span className="text-white/30 md:ml-0 ml-2">Journal.</span>
+              </h2>
             </div>
-            <Link href="/blog" className="px-8 py-4 bg-transparent border border-[#C9A227] text-[#C9A227] text-xs font-black uppercase tracking-widest hover:bg-[#C9A227] hover:text-[#0B2341] transition-all duration-300">
+            <Link href="/blog" className="w-full md:w-auto text-center px-8 py-4 bg-transparent border border-[#C9A227] text-[#C9A227] text-xs font-black uppercase tracking-widest hover:bg-[#C9A227] hover:text-[#0B2341] transition-all duration-300">
               View Complete Archives
             </Link>
           </div>
@@ -363,7 +366,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 6. SIKÇA SORULAN SORULAR - Boşluk azaltıldı */}
+      {/* 6. SIKÇA SORULAN SORULAR */}
       <section className="py-16 px-6 lg:px-12 bg-[#F8F8F8] border-t border-[#0B2341]/5">
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-12">
@@ -434,7 +437,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 8. FOOTER - YENİ EKLENDİ */}
+      {/* 8. FOOTER */}
       <footer className="bg-[#061528] py-8 text-center border-t border-white/10">
         <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em]">
           &copy; {new Date().getFullYear()} Salman Kurt. All Rights Reserved.
