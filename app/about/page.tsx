@@ -1,22 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
 
 export const metadata = {
   title: "About Salman Kurt | Founder of Sea Drop Travel",
   description: "Meet Salman Kurt, founder of Sea Drop Travel. Over 20 years of experience in Kusadasi, Ephesus tours, and US real estate investments.",
 };
 
-// Sanity'den About Gallery verilerini çeken fonksiyon
-async function getAboutGallery() {
-  const query = `*[_type == "aboutGallery"] | order(order asc, _createdAt desc)`;
-  return await client.fetch(query);
-}
-
-export default async function AboutPage() {
-  const galleryImages = await getAboutGallery();
-
+export default function AboutPage() {
   const destinations = [
     "Ephesus Ancient City", "House of Virgin Mary", "Temple of Artemis", 
     "Basilica of Saint John", "Seven Sleepers", "Sirince Village", 
@@ -47,13 +37,32 @@ export default async function AboutPage() {
           </div>
 
           <div className="flex-1 w-full relative">
-            <div className="aspect-[4/5] md:aspect-square w-full max-w-[500px] ml-auto relative bg-[#0B2341] shadow-[0_20px_50px_-15px_rgba(11,35,65,0.3)] overflow-hidden group">
-              <div className="absolute inset-0 flex items-center justify-center border border-[#C9A227]/20 m-4">
-                <span className="text-[#C9A227] font-[family-name:var(--font-montserrat)] text-sm tracking-[0.3em] uppercase opacity-70">
-                  Portrait Frame
-                </span>
-              </div>
+            {/* 
+              LÜKS KART SARICISI (WRAPPER) 
+              Dış gölge (Shadow) standartta Lacivert, Hover'da Altın Sarısı 
+            */}
+            <div className="aspect-[4/5] md:aspect-square w-full max-w-[500px] ml-auto relative bg-[#0B2341] overflow-hidden group cursor-default shadow-[0_30px_60px_-15px_rgba(11,35,65,0.5)] hover:shadow-[0_30px_60px_-15px_rgba(201,162,39,0.3)] transition-shadow duration-[1500ms]">
+              
+              <Image 
+                src="/portraitframe.png" 
+                alt="Salman Kurt" 
+                fill 
+                priority
+                className="object-cover object-top transition-transform duration-[1500ms] group-hover:scale-105"
+              />
+              
+              {/* 
+                İÇTEN ALTTAN VURAN GLOW (SİS) EFEKTİ 
+                Standartta Lacivert (from-[#0B2341]), Hover'da Altın Sarısı (group-hover:from-[#C9A227])
+              */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B2341] via-[#0B2341]/0 to-transparent opacity-80 group-hover:from-[#C9A227] group-hover:opacity-60 transition-all duration-[1500ms] pointer-events-none z-10"></div>
+              
+              {/* İnce İç Çerçeve Efekti */}
+              <div className="absolute inset-4 border border-[#C9A227]/20 pointer-events-none z-20 transition-all duration-[1500ms] group-hover:border-[#C9A227]/50"></div>
+            
             </div>
+            
+            {/* Arkadaki sabit altın sarısı kare */}
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#C9A227] -z-10 hidden md:block"></div>
           </div>
         </div>
@@ -218,67 +227,6 @@ export default async function AboutPage() {
 
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* 3. PREMIUM SLIDING GALLERY - Bug Giderildi, Scroll Aktif! */}
-      <section className="pt-24 bg-[#0B2341] relative border-t-4 border-[#C9A227]">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-12 mb-12 flex justify-between items-end">
-          <div>
-            <p className="text-[#C9A227] font-bold uppercase tracking-[0.2em] text-sm mb-4">
-              Visual Story
-            </p>
-            <h2 className="font-[family-name:var(--font-montserrat)] text-4xl md:text-5xl font-black uppercase tracking-tight text-white">
-              Moments & <br />
-              <span className="text-white/30">Milestones.</span>
-            </h2>
-          </div>
-          
-          <div className="hidden md:flex gap-4">
-              <div className="w-12 h-12 border border-white/10 flex items-center justify-center text-white/30">&larr;</div>
-              <div className="w-12 h-12 border border-[#C9A227] flex items-center justify-center text-[#C9A227]">&rarr;</div>
-          </div>
-        </div>
-
-        {/* Scroll kilidi kaldırıldı, w-full eklendi */}
-        <div className="flex gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory px-6 lg:px-12 pb-24 w-full cursor-grab active:cursor-grabbing
-          [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          
-          {galleryImages?.length > 0 ? (
-            galleryImages.map((item: any) => (
-              <div 
-                key={item._id} 
-                className="snap-center shrink-0 w-[280px] md:w-[380px] aspect-[4/5] relative bg-[#0F2D5C] group cursor-pointer border border-white/5 overflow-hidden"
-              >
-                {item.image?.asset && (
-                  <Image 
-                    src={urlFor(item.image).url()} 
-                    alt={item.image.alt || item.title || "Salman Kurt Visual Story"} 
-                    fill 
-                    sizes="(max-width: 768px) 100vw, 400px"
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                )}
-                
-                <div className="absolute inset-0 bg-[#0B2341]/0 group-hover:bg-[#0B2341]/60 transition-colors duration-500 border-[3px] border-transparent group-hover:border-[#C9A227]/50 z-10 flex items-end p-6">
-                  {item.title && (
-                    <span className="text-[#C9A227] opacity-0 group-hover:opacity-100 transition-opacity duration-500 font-[family-name:var(--font-montserrat)] text-xs tracking-[0.2em] uppercase font-bold">
-                      {item.title}
-                    </span>
-                  )}
-                </div>
-              </div>
-            ))
-          ) : (
-            <div className="snap-center shrink-0 w-[280px] md:w-[380px] aspect-[4/5] relative bg-[#0F2D5C] border border-white/5 flex items-center justify-center">
-               <span className="text-white/20 font-[family-name:var(--font-montserrat)] text-xs tracking-[0.3em] uppercase text-center px-4">
-                  Awaiting <br/> Gallery Uploads
-               </span>
-            </div>
-          )}
-
-          {/* Sona gelince boşluk bırakmak için sahte eleman */}
-          <div className="snap-center shrink-0 w-6 md:w-12"></div>
         </div>
       </section>
 

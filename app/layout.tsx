@@ -3,6 +3,7 @@ import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 // Yeni oluşturduğumuz lüks Navbar'ı içeri aktarıyoruz
 import Navbar from "@/app/navbar";
+import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700", "900"], variable: "--font-montserrat" });
@@ -31,6 +32,10 @@ export default function RootLayout({
         <Navbar />
 
         {children}
+
+        {/* EKSİK OLAN FOOTER BURAYA EKLENDİ */}
+        <Footer />
+        
       </body>
     </html>
   );

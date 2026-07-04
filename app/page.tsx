@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import HomeContactForm from "@/components/HomeContactForm";
+import HomeContactForm from "@/app/components/HomeContactForm";
 
 // Sanity'den son 3 Blog yazısını çeken fonksiyon
 async function getLatestBlogs() {

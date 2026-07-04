@@ -25,6 +25,7 @@ export default function Navbar() {
     { name: "Sea Drop Travel", href: "/seadrop" },
     { name: "Florida Real Estate", href: "/floridarealestate" }, // Eğer klasör adını düzeltmediysen burayı /floridarealestate yapabilirsin
     { name: "Blog", href: "/blog" },
+    { name: "Gallery", href: "/gallery" },
   ];
 
   // Mobilde menü açıldığında sayfanın arkada kaymasını engelle

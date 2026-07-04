@@ -3,7 +3,8 @@ import { postType } from './postType'
 import { authorType } from './authorType'
 import { blockContentType } from './blockContentType'
 import { galleryType } from './gallery'
-import { aboutGallery } from './aboutGallery' // 1. Dosyayı içeri aktardık
+import { aboutGallery } from './aboutGallery' 
+import { mainGallery } from './mainGallery' // 1. Yeni ana galeri şemasını içeri aktardık
 
 export const schemaTypes = [
   blockContentType,
@@ -11,5 +12,6 @@ export const schemaTypes = [
   postType,
   authorType,
   galleryType, 
-  aboutGallery, // 2. Şema listesine ekledik
+  aboutGallery, 
+  mainGallery, // 2. Şema listesine ekledik
 ]
