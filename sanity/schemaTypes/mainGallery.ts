@@ -4,23 +4,35 @@ export const mainGallery = {
     type: 'document',
     fields: [
       {
-        name: 'title',
-        title: 'Photo Title',
+        name: 'title_tr',
+        title: 'Photo Title (Türkçe)',
         type: 'string',
-        description: 'E.g., Sunset at Ephesus, Luxury Villa...'
+        description: 'Örn: Efes\'te Gün Batımı'
       },
       {
-        name: 'category',
-        title: 'Category',
+        name: 'title_en',
+        title: 'Photo Title (English)',
+        type: 'string',
+        description: 'E.g., Sunset at Ephesus'
+      },
+      {
+        name: 'category_tr',
+        title: 'Category (Türkçe)',
+        type: 'string',
+        description: 'Örn: Turizm, Gayrimenkul, VIP Hizmet...'
+      },
+      {
+        name: 'category_en',
+        title: 'Category (English)',
         type: 'string',
         description: 'E.g., Tourism, Real Estate, VIP Service...'
       },
       {
         name: 'image',
-        title: 'Image',
+        title: 'Image (Ortak Görsel)',
         type: 'image',
         options: {
-          hotspot: true, // Fotoğrafı kırparken odak noktasını seçmeni sağlar
+          hotspot: true, 
         },
         validation: (Rule: any) => Rule.required(),
       },
@@ -33,9 +45,17 @@ export const mainGallery = {
     ],
     preview: {
       select: {
-        title: 'title',
-        subtitle: 'category',
+        title: 'title_tr', // Panelin önizlemesinde Türkçe başlığı göstersin
+        subtitle: 'category_tr',
         media: 'image',
+      },
+      prepare(selection: any) {
+        const { title, subtitle, media } = selection;
+        return {
+          title: title || 'İsimsiz Fotoğraf',
+          subtitle: subtitle,
+          media: media,
+        };
       },
     },
   };

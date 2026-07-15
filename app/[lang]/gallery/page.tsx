@@ -1,24 +1,46 @@
 import { client } from "@/sanity/lib/client";
 import GalleryClient from "./GalleryClient";
 
-export const metadata = {
-  title: "Gallery | Salman Kurt",
-  description: "Visual archives and exclusive moments from Sea Drop Travel and global investments.",
-};
+// Sekme başlıklarını (Metadata) dile göre dinamik yapıyoruz
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: 'en' | 'tr' }> | { lang: 'en' | 'tr' };
+}) {
+  const resolvedParams = await params;
+  const lang = resolvedParams?.lang || "en";
+
+  return {
+    title: lang === 'tr' ? "Galeri | Salman Kurt" : "Gallery | Salman Kurt",
+    description: lang === 'tr' 
+      ? "Sea Drop Travel ve küresel yatırımlardan görsel arşivler ve özel anlar." 
+      : "Visual archives and exclusive moments from Sea Drop Travel and global investments.",
+  };
+}
 
 export const revalidate = 60; 
 
 async function getMainGallery() {
+  // YENİ ŞEMAYA GÖRE GROQ SORGUSU (TR ve EN başlıkları ayrı ayrı çekiyoruz)
   const query = `*[_type == "mainGallery"] | order(order asc, _createdAt desc) {
     _id,
-    title,
-    category,
+    title_tr,
+    title_en,
+    category_tr,
+    category_en,
     image
   }`;
   return await client.fetch(query);
 }
 
-export default async function GalleryPage() {
+export default async function GalleryPage({
+  params,
+}: {
+  params: Promise<{ lang: 'en' | 'tr' }> | { lang: 'en' | 'tr' };
+}) {
+  const resolvedParams = await params;
+  const lang = resolvedParams?.lang || "en";
+
   const galleryItems = await getMainGallery();
 
   const seoKeywords = [
@@ -47,5 +69,5 @@ export default async function GalleryPage() {
     "Guaranteed Return to Ship Ephesus Tour"
   ];
 
-  return <GalleryClient galleryItems={galleryItems} seoKeywords={seoKeywords} />;
+  return <GalleryClient galleryItems={galleryItems} seoKeywords={seoKeywords} lang={lang} />;
 }
