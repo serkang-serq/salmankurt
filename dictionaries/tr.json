@@ -178,5 +178,37 @@
         "Miami Satılık Ev", "Miami Lüks Gayrimenkul", "Sahil Evleri", 
         "Satılık Daire", "Uluslararası Yatırım", "Yatırım Amaçlı Mülk", "Florida Ev Alma"
       ]
-    }
+    },
+
+    "contact": {
+  "heroSub": "DÜNYA ÇAPINDA BAĞLANTI",
+  "heroTitle1": "Yolculuğunuza",
+  "heroTitle2": "Başlayın.",
+  "panel1Badge": "TÜRKİYE MERKEZ & TURİZM",
+  "panel1Title": "Sea Drop Travel",
+  "panel1Desc": "Özel sahil turları, kişiselleştirilmiş Efes turları ve yerel deneyimler için.",
+  "panel1LocTitle": "KONUM",
+  "panel1Loc": "Kuşadası, Aydın / Türkiye",
+  "panel2Badge": "ABD YATIRIM & GAYRİMENKUL",
+  "panel2Title": "Miami Gayrimenkul",
+  "panel2Desc": "Konut alımları, lüks sahil evleri ve varlık yönetimi için.",
+  "panel2RepTitle": "TEMSİLCİ",
+  "panel2Rep": "Denizcan Kurt",
+  "panel2CallTitle": "DOĞRUDAN ARAMA",
+  "title": "RESMİ BİR TALEP GÖNDERİN",
+  "successTitle": "TALEP ALINDI",
+  "successDesc": "İletişime geçtiğiniz için teşekkürler. Resmi talebiniz yönetim ekibimize başarıyla iletildi.",
+  "successBtn": "YENİ BİR MESAJ GÖNDER",
+  "fullName": "AD SOYAD",
+  "namePlaceholder": "Ahmet Yılmaz",
+  "email": "E-POSTA ADRESİ",
+  "emailPlaceholder": "ahmet@ornek.com",
+  "inquiryType": "TALEP TÜRÜ",
+  "seaDrop": "SEA DROP TRAVEL & TOURS",
+  "realEstate": "FLORIDA GAYRİMENKUL & YATIRIM",
+  "message": "MESAJINIZ",
+  "messagePlaceholder": "Lütfen ilgilendiğiniz konuları veya yatırım gereksinimlerinizi detaylandırın...",
+  "submitBtn": "TALEBİ GÖNDER",
+  "submitting": "GÖNDERİLİYOR..."
+}
   }
