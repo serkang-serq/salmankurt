@@ -125,10 +125,10 @@ export default async function HomePage({
             </p>
           </div>
           
-          <h1 className="font-[family-name:var(--font-montserrat)] text-5xl sm:text-7xl md:text-[7.5rem] font-black uppercase tracking-tighter leading-[0.85] text-[#0B2341] mb-12">
-            {dict.home.heroTitle1} <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2341] via-[#0B2341] to-[#C9A227]">{dict.home.heroTitle2}</span>
-          </h1>
+          <h1 className="font-[family-name:var(--font-montserrat)] text-5xl sm:text-7xl md:text-[7.5rem] font-black uppercase tracking-tighter leading-[1.1] text-[#0B2341] mb-12">
+  {dict.home.heroTitle1} <br />
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2341] via-[#0B2341] to-[#C9A227]">{dict.home.heroTitle2}</span>
+</h1>
           
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
             <div className="max-w-2xl">
