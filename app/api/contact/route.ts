@@ -9,9 +9,9 @@ export async function POST(request: Request) {
     const { name, email, inquiry_type, message } = body;
 
     await resend.emails.send({
-      from: 'Salman Kurt <info@salmankurt.com>', // Artık resmi domainimiz devrede!
-      to: ['salman@salmankurt.com'], // Formlar doğrudan buraya düşecek
-      reply_to: email, // Gelen maile "Yanıtla" deyince direkt müşteriye gitsin
+      from: 'Salman Kurt <info@salmankurt.com>', 
+      to: ['salman@salmankurt.com'], 
+      replyTo: email, // <-- İŞTE BURASI DÜZELDİ
       subject: `Yeni Talep: ${inquiry_type} - ${name}`,
       html: `
         <h2>Web Sitesinden Yeni Bir Form Dolduruldu</h2>
