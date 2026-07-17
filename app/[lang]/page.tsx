@@ -2,11 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-// Hata vermemesi için relative (göreceli) yollar kullanıldı
 import HomeContactForm from "../components/HomeContactForm";
 import { getDictionary } from "../../dictionaries/get-dictionary";
 
-// Sanity'den son 3 Blog yazısını çeken fonksiyon
+// YENİ GÜVENLİK: Sorguyu çok dilli yapıya uygun hale getirdik. Karmaşık body filtrelerini kaldırdık.
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 async function getLatestBlogs() {
   const query = `*[_type == "post"] | order(publishedAt desc)[0...3] {
     _id,
@@ -14,9 +16,15 @@ async function getLatestBlogs() {
     slug,
     mainImage,
     publishedAt,
-    "excerpt": array::join(string::split((pt::text(body)), "")[0...150], "") + "..."
+    excerpt
   }`;
-  return await client.fetch(query);
+  
+  try {
+    return await client.fetch(query);
+  } catch (error) {
+    console.error("Ana sayfa blogları çekilirken hata:", error);
+    return [];
+  }
 }
 
 export default async function HomePage({
@@ -374,45 +382,56 @@ export default async function HomePage({
 
           {blogs?.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {blogs.map((post: any) => (
-                <Link href={`/${lang}/blog/${post.slug?.current}`} key={post._id} className="group block bg-white/5 border border-white/10 hover:border-[#C9A227]/50 transition-colors duration-500">
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    {post.mainImage ? (
-                      <Image 
-                        src={urlFor(post.mainImage).url()} 
-                        alt={post.title} 
-                        fill 
-                        sizes="(max-width: 768px) 100vw, 400px"
-                        className="object-cover group-hover:scale-110 transition-transform duration-1000 ease-out opacity-80 group-hover:opacity-100"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-[#0B2341] flex items-center justify-center border-b border-white/10"></div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B2341] to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
-                  </div>
+              {blogs.map((post: any) => {
+                // YENİ GÜVENLİK: Başlık ve özet alanlarını çift dile göre yakala (çökmeyi engelleyen hayat kurtarıcı kod)
+                const postTitle = typeof post.title === 'string' 
+                  ? post.title 
+                  : (post.title?.[lang] || post.title?.tr || "Makale");
 
-                  <div className="p-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="text-[10px] text-[#C9A227] font-black uppercase tracking-widest">
-                        {new Date(post.publishedAt).toLocaleDateString(lang === "tr" ? 'tr-TR' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                      </span>
-                      <div className="h-[1px] flex-1 bg-white/10"></div>
+                const postExcerpt = typeof post.excerpt === 'string'
+                  ? post.excerpt
+                  : (post.excerpt?.[lang] || post.excerpt?.tr || (lang === "tr" ? "Kurumsal analizlere ve derin gayrimenkul içgörülerine bu resmi yayından erişin." : "Access corporate analysis, tourism market intelligence, and deep real estate insights in this official publication."));
+
+                return (
+                  <Link href={`/${lang}/blog/${post.slug?.current}`} key={post._id} className="group block bg-white/5 border border-white/10 hover:border-[#C9A227]/50 transition-colors duration-500">
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      {post.mainImage ? (
+                        <Image 
+                          src={urlFor(post.mainImage).url()} 
+                          alt={postTitle} 
+                          fill 
+                          sizes="(max-width: 768px) 100vw, 400px"
+                          className="object-cover group-hover:scale-110 transition-transform duration-1000 ease-out opacity-80 group-hover:opacity-100"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-[#0B2341] flex items-center justify-center border-b border-white/10"></div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0B2341] to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
                     </div>
-                    
-                    <h3 className="font-[family-name:var(--font-montserrat)] text-xl font-black uppercase tracking-tight text-white group-hover:text-[#C9A227] transition-colors duration-300 line-clamp-2 leading-tight mb-4">
-                      {post.title}
-                    </h3>
-                    
-                    <p className="text-sm text-white/50 line-clamp-2 leading-relaxed font-light mb-6">
-                      {post.excerpt || (lang === "tr" ? "Kurumsal analizlere ve derin gayrimenkul içgörülerine bu resmi yayından erişin." : "Access corporate analysis, tourism market intelligence, and deep real estate insights in this official publication.")}
-                    </p>
-                    
-                    <div className="text-[10px] font-black uppercase tracking-widest text-[#C9A227] flex items-center gap-2">
-                      {dict.home.readArticle} <span className="transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">&rarr;</span>
+
+                    <div className="p-8">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="text-[10px] text-[#C9A227] font-black uppercase tracking-widest">
+                          {new Date(post.publishedAt).toLocaleDateString(lang === "tr" ? 'tr-TR' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                        </span>
+                        <div className="h-[1px] flex-1 bg-white/10"></div>
+                      </div>
+                      
+                      <h3 className="font-[family-name:var(--font-montserrat)] text-xl font-black uppercase tracking-tight text-white group-hover:text-[#C9A227] transition-colors duration-300 line-clamp-2 leading-tight mb-4">
+                        {postTitle}
+                      </h3>
+                      
+                      <p className="text-sm text-white/50 line-clamp-2 leading-relaxed font-light mb-6">
+                        {postExcerpt}
+                      </p>
+                      
+                      <div className="text-[10px] font-black uppercase tracking-widest text-[#C9A227] flex items-center gap-2">
+                        {dict.home.readArticle} <span className="transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">&rarr;</span>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
           ) : (
              <div className="p-12 border border-white/10 text-center text-white/40 font-bold uppercase tracking-widest text-xs bg-white/5">
