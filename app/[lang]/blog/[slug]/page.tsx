@@ -68,6 +68,10 @@ export default async function BlogPostPage({
   const locale = lang === 'tr' ? 'tr-TR' : 'en-US';
   const formattedDate = new Date(post.publishedAt).toLocaleDateString(locale, { month: 'long', day: 'numeric', year: 'numeric' });
 
+  // Mevcut dile göre içeriği çekiyoruz (yoksa varsayılan olarak Türkçe göstersin)
+  const currentTitle = post.title?.[lang] || post.title?.tr || "İsimsiz Yazı";
+  const currentBody = post.body?.[lang] || post.body?.tr;
+
   const ptComponents = {
     types: {
       image: ({ value }: any) => {
@@ -119,7 +123,7 @@ export default async function BlogPostPage({
         {post.mainImage && (
           <Image 
             src={urlFor(post.mainImage).url()} 
-            alt={post.title} 
+            alt={currentTitle} 
             fill 
             priority
             className="object-cover opacity-60 scale-105 animate-[slowZoom_20s_ease-in-out_infinite_alternate]"
@@ -138,7 +142,7 @@ export default async function BlogPostPage({
 
         <div className="absolute bottom-0 left-0 w-full px-6 lg:px-12 pb-24 z-10 text-center">
             <h1 className="font-[family-name:var(--font-montserrat)] text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter text-white leading-[0.95] mb-8 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
-              {post.title}
+              {currentTitle}
             </h1>
         </div>
       </section>
@@ -185,8 +189,8 @@ export default async function BlogPostPage({
             </div>
 
             <article className="prose-lg max-w-none">
-              {post.body ? (
-                <PortableText value={post.body} components={ptComponents} />
+              {currentBody ? (
+                <PortableText value={currentBody} components={ptComponents} />
               ) : (
                 <div className="py-20 text-center border-y border-[#0B2341]/5">
                   <p className="text-[#0B2341]/40 italic">{text.indexing}</p>

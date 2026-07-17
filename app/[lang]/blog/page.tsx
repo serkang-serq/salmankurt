@@ -5,26 +5,25 @@ import { urlFor } from "@/sanity/lib/image";
 
 const POSTS_PER_PAGE = 10;
 
-// Yeni: Dil parametresini (lang) alıyoruz
-async function getPostsData(page: number, lang: string) {
+async function getPostsData(page: number) {
   const start = (page - 1) * POSTS_PER_PAGE;
   const end = start + POSTS_PER_PAGE;
 
-  // Yeni: && language == $lang ekleyerek sadece o dilin yazılarını çekiyoruz
+  // language == $lang şartı kaldırıldı. Verilerin tr ve en objeleri direkt çekiliyor.
   const query = `{
-    "posts": *[_type == "post" && language == $lang] | order(publishedAt desc, _createdAt desc)[$start...$end] {
+    "posts": *[_type == "post"] | order(publishedAt desc, _createdAt desc)[$start...$end] {
       _id,
       title,
       slug,
       mainImage,
       publishedAt,
       _createdAt,
-      "excerpt": array::join(string::split((pt::text(body)), "")[0...160], "") + "..."
+      excerpt
     },
-    "total": count(*[_type == "post" && language == $lang])
+    "total": count(*[_type == "post"])
   }`;
   
-  return await client.fetch(query, { start, end, lang });
+  return await client.fetch(query, { start, end });
 }
 
 export async function generateMetadata({
@@ -56,15 +55,13 @@ export default async function BlogPage({
   const resolvedSearchParams = await searchParams;
   const currentPage = Number(resolvedSearchParams?.page) || 1;
   
-  // Blog verilerini dili (lang) belirterek çekiyoruz
-  const { posts, total } = await getPostsData(currentPage, lang);
+  const { posts, total } = await getPostsData(currentPage);
   const totalPages = Math.ceil(total / POSTS_PER_PAGE);
 
   const isFirstPage = currentPage === 1;
   const featuredPost = isFirstPage && posts.length > 0 ? posts[0] : null;
   const gridPosts = isFirstPage ? posts.slice(1) : posts;
 
-  // Dile Göre Sabit Metinler Sözlüğü
   const text = {
     en: {
       preTitle: "Official Media & Insights",
@@ -106,7 +103,6 @@ export default async function BlogPage({
   return (
     <main className="bg-[#F8F8F8] min-h-screen">
       
-      {/* 1. GİRİŞ (HERO) */}
       <section className="pt-32 pb-48 px-6 lg:px-12 bg-[#0B2341] text-center border-b-4 border-[#C9A227] relative">
         <div className="max-w-[1000px] mx-auto relative z-10">
           <p className="text-[#C9A227] text-xs font-bold uppercase tracking-[0.3em] mb-4">
@@ -121,7 +117,6 @@ export default async function BlogPage({
         </div>
       </section>
 
-      {/* İÇERİK YOKSA */}
       {posts.length === 0 && (
         <section className="py-24 px-6 text-center">
           <div className="max-w-2xl mx-auto p-12 bg-white border border-[#0B2341]/10 shadow-sm">
@@ -131,7 +126,6 @@ export default async function BlogPage({
         </section>
       )}
 
-      {/* 2. ÖNE ÇIKAN YAZI */}
       {featuredPost && (
         <section className="px-4 md:px-6 lg:px-12 -mt-32 relative z-20 mb-20">
           <div className="max-w-[1400px] mx-auto">
@@ -142,7 +136,7 @@ export default async function BlogPage({
                   {featuredPost.mainImage && (
                     <Image 
                       src={urlFor(featuredPost.mainImage).url()} 
-                      alt={featuredPost.title} 
+                      alt={featuredPost.title?.[lang] || "Featured Post"} 
                       fill 
                       priority
                       className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
@@ -158,12 +152,14 @@ export default async function BlogPage({
                     {formatDate(featuredPost.publishedAt, featuredPost._createdAt)}
                   </p>
                   
+                  {/* Başlık dinamik dilde */}
                   <h2 className="font-[family-name:var(--font-montserrat)] text-3xl font-black uppercase tracking-tight text-[#0B2341] mb-6 leading-snug group-hover:text-[#C9A227] transition-colors duration-300">
-                    {featuredPost.title}
+                    {featuredPost.title?.[lang] || featuredPost.title?.tr}
                   </h2>
                   
+                  {/* Özet dinamik dilde */}
                   <p className="text-[#0B2341]/70 leading-relaxed text-sm font-light mb-10 line-clamp-4">
-                    {featuredPost.excerpt}
+                    {featuredPost.excerpt?.[lang] || featuredPost.excerpt?.tr}
                   </p>
                   
                   <div className="mt-auto">
@@ -179,7 +175,6 @@ export default async function BlogPage({
         </section>
       )}
 
-      {/* 3. DİĞER YAZILAR */}
       {gridPosts.length > 0 && (
         <section className={`px-6 lg:px-12 pb-32 ${!isFirstPage ? "pt-16" : ""}`}>
           <div className="max-w-[1400px] mx-auto">
@@ -200,7 +195,7 @@ export default async function BlogPage({
                     {post.mainImage && (
                       <Image 
                         src={urlFor(post.mainImage).url()} 
-                        alt={post.title} 
+                        alt={post.title?.[lang] || "Post Image"} 
                         fill 
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover transition-transform duration-[1500ms] group-hover:scale-110"
@@ -213,12 +208,14 @@ export default async function BlogPage({
                       {formatDate(post.publishedAt, post._createdAt)}
                     </p>
                     
+                    {/* Grid Başlık */}
                     <h3 className="font-[family-name:var(--font-montserrat)] text-lg font-black uppercase tracking-tight text-[#0B2341] mb-4 leading-snug group-hover:text-[#C9A227] transition-colors duration-300 line-clamp-2">
-                      {post.title}
+                      {post.title?.[lang] || post.title?.tr}
                     </h3>
                     
+                    {/* Grid Özet */}
                     <p className="text-sm text-[#0B2341]/60 font-light leading-relaxed line-clamp-3 mb-6 flex-1">
-                      {post.excerpt}
+                      {post.excerpt?.[lang] || post.excerpt?.tr}
                     </p>
                     
                     <div className="mt-auto pt-4 border-t border-[#0B2341]/10">
@@ -232,7 +229,6 @@ export default async function BlogPage({
               ))}
             </div>
 
-            {/* 4. SAYFALAMA */}
             {totalPages > 1 && (
               <div className="mt-20 flex items-center justify-center gap-2">
                 {currentPage > 1 && (

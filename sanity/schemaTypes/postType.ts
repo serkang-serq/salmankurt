@@ -7,42 +7,35 @@ export const postType = defineType({
   type: 'document',
   icon: DocumentTextIcon,
   fields: [
-    // 1. YENİ EKLENEN ALAN: DİL SEÇİMİ
-    defineField({
-      name: 'language',
-      title: 'Language (Dil)',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'English', value: 'en' },
-          { title: 'Turkish (Türkçe)', value: 'tr' },
-        ],
-        layout: 'radio', // Panelde radyo butonu olarak görünmesi için
-        direction: 'horizontal', // Yan yana dursunlar
-      },
-      initialValue: 'en', // Varsayılan İngilizce başlasın
-      validation: (Rule) => Rule.required().error('Bir dil seçmek zorunludur.'),
-    }),
-    
+    // 1. BAŞLIK (Çift Dilli)
     defineField({
       name: 'title',
-      title: 'Title',
-      type: 'string',
+      title: 'Title (Başlık)',
+      type: 'object',
+      fields: [
+        defineField({ name: 'tr', title: 'Türkçe', type: 'string' }),
+        defineField({ name: 'en', title: 'İngilizce', type: 'string' }),
+      ],
     }),
+    
+    // 2. SLUG (URL) - Türkçe başlığa göre otomatik oluşacak
     defineField({
       name: 'slug',
       title: 'Slug (URL)',
       type: 'slug',
       options: {
-        source: 'title',
+        source: 'title.tr', 
+        maxLength: 96,
       },
     }),
+
     defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
       to: { type: 'author' },
     }),
+
     defineField({
       name: 'mainImage',
       title: 'Main Image',
@@ -58,37 +51,53 @@ export const postType = defineType({
         })
       ]
     }),
+
     defineField({
       name: 'categories',
       title: 'Categories',
       type: 'array',
       of: [defineArrayMember({ type: 'reference', to: { type: 'category' } })],
     }),
+
     defineField({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
     }),
+
+    // 3. ÖZET EKLENDİ (Çift Dilli) - Kartlarda gösterilecek kısa yazı
+    defineField({
+      name: 'excerpt',
+      title: 'Excerpt (Kısa Özet)',
+      type: 'object',
+      fields: [
+        defineField({ name: 'tr', title: 'Türkçe Özet', type: 'text', rows: 3 }),
+        defineField({ name: 'en', title: 'İngilizce Özet', type: 'text', rows: 3 }),
+      ],
+    }),
+
+    // 4. İÇERİK (Çift Dilli) - Makalenin ana gövdesi
     defineField({
       name: 'body',
-      title: 'Body (Content)',
-      type: 'blockContent',
+      title: 'Body (İçerik)',
+      type: 'object',
+      fields: [
+        defineField({ name: 'tr', title: 'Türkçe İçerik', type: 'blockContent' }),
+        defineField({ name: 'en', title: 'İngilizce İçerik', type: 'blockContent' }),
+      ],
     }),
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'title.tr', // Sanity listesinde TR başlığı göstersin
       author: 'author.name',
       media: 'mainImage',
-      language: 'language', // Dil bilgisini önizleme için çekiyoruz
     },
     prepare(selection) {
-      const { author, language } = selection
-      // Sanity listesinde başlığın yanında (EN) veya (TR) yazmasını sağlıyoruz
-      const langBadge = language === 'tr' ? '(TR) 🇹🇷' : '(EN) 🇺🇸'
+      const { author } = selection
       return {
         ...selection, 
-        title: `${langBadge} ${selection.title || 'İsimsiz'}`,
+        title: selection.title || 'İsimsiz Yazı',
         subtitle: author && `by ${author}`
       }
     },
