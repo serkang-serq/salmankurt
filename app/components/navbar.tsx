@@ -194,9 +194,9 @@ export default function Navbar({ lang }: { lang: "en" | "tr" }) {
         </div>
       </nav>
 
-      {/* MOBİL TAM EKRAN MENÜ */}
-      <div 
-        className={`fixed inset-0 bg-[#0B2341] flex flex-col items-center justify-center gap-8 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] lg:hidden z-[190] ${
+{/* MOBİL TAM EKRAN MENÜ */}
+<div 
+        className={`fixed inset-0 bg-[#0B2341] flex flex-col items-center justify-start pt-32 pb-12 overflow-y-auto gap-7 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] lg:hidden z-[190] ${
           isOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"
         }`}
       >
@@ -205,7 +205,7 @@ export default function Navbar({ lang }: { lang: "en" | "tr" }) {
             key={link.name}
             href={link.href}
             onClick={() => setIsOpen(false)}
-            className={`text-lg font-black uppercase tracking-[0.2em] transition-colors ${
+            className={`text-lg font-black uppercase tracking-[0.2em] transition-colors shrink-0 ${
               pathname === link.href ? "text-[#C9A227]" : "text-white hover:text-[#C9A227]"
             }`}
           >
@@ -215,7 +215,7 @@ export default function Navbar({ lang }: { lang: "en" | "tr" }) {
         <a 
           href={`/${lang}/contact`}
           onClick={() => setIsOpen(false)}
-          className="mt-6 px-10 py-4 border border-[#C9A227] text-[#C9A227] text-xs font-black uppercase tracking-[0.2em] hover:bg-[#C9A227] hover:text-[#0B2341] transition-colors"
+          className="mt-4 px-10 py-4 border border-[#C9A227] text-[#C9A227] text-xs font-black uppercase tracking-[0.2em] hover:bg-[#C9A227] hover:text-[#0B2341] transition-colors shrink-0"
         >
           {t.inquireBtn}
         </a>
