@@ -3,7 +3,6 @@ import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 
-// YENİ VE EN ÖNEMLİ KISIM: Önbelleği (Cache) kapatır, her seferinde Sanity'den en güncel kategorileri çeker.
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
@@ -13,7 +12,6 @@ async function getBlogData(page: number, categorySlug: string = "") {
   const start = (page - 1) * POSTS_PER_PAGE;
   const end = start + POSTS_PER_PAGE;
 
-  // Güvenli Kategori Filtresi
   const filter = categorySlug 
     ? `_type == "post" && defined(categories) && $categorySlug in categories[]->slug.current` 
     : `_type == "post"`;
@@ -37,7 +35,14 @@ async function getBlogData(page: number, categorySlug: string = "") {
     "total": count(*[${filter}])
   }`;
   
-  return await client.fetch(query, { start, end, categorySlug: categorySlug || "" });
+  // Hata durumunda site çökmesin diye try-catch ekliyoruz
+  try {
+    const result = await client.fetch(query, { start, end, categorySlug: categorySlug || "" });
+    return result;
+  } catch (error) {
+    console.error("Sanity Fetch Hatası:", error);
+    return { categories: [], posts: [], total: 0 };
+  }
 }
 
 export async function generateMetadata({
@@ -70,7 +75,12 @@ export default async function BlogPage({
   const currentPage = Number(resolvedSearchParams?.page) || 1;
   const currentCategory = resolvedSearchParams?.category || "";
   
-  const { posts, categories, total } = await getBlogData(currentPage, currentCategory);
+  // YENİ GÜVENLİK AĞI: Eğer veri undefined/null dönerse site çökmesin diye boş diziler atıyoruz
+  const data = await getBlogData(currentPage, currentCategory);
+  const posts = data?.posts || [];
+  const categories = data?.categories || [];
+  const total = data?.total || 0;
+  
   const totalPages = Math.ceil(total / POSTS_PER_PAGE);
 
   const isFirstPage = currentPage === 1;
@@ -120,7 +130,6 @@ export default async function BlogPage({
   return (
     <main className="bg-[#F8F8F8] min-h-screen">
       
-      {/* 1. HERO VE KATEGORİ MENÜSÜ */}
       <section className="pt-32 pb-40 px-6 lg:px-12 bg-[#0B2341] text-center border-b-4 border-[#C9A227] relative">
         <div className="max-w-[1000px] mx-auto relative z-10">
           <p className="text-[#C9A227] text-xs font-bold uppercase tracking-[0.3em] mb-4">
@@ -145,10 +154,8 @@ export default async function BlogPage({
               {text.allCategories}
             </Link>
             
-            {/* Sanity'den Gelen Kategoriler */}
             {categories?.map((c: any) => {
               if (!c.slug) return null;
-              // Hem eski düz metin hem yeni çift dilli obje formatını destekleyen güvenlik ağı
               const categoryName = typeof c.title === 'string' 
                 ? c.title 
                 : (c.title?.[lang] || c.title?.tr || "İsimsiz Kategori");
@@ -171,7 +178,6 @@ export default async function BlogPage({
         </div>
       </section>
 
-      {/* 2. KATEGORİ BOŞ DURUMU (EMPTY STATE) */}
       {posts.length === 0 && (
         <section className="py-32 px-6 text-center">
           <div className="max-w-2xl mx-auto flex flex-col items-center">
@@ -192,7 +198,6 @@ export default async function BlogPage({
         </section>
       )}
 
-      {/* 3. ÖNE ÇIKAN YAZI */}
       {featuredPost && (
         <section className="px-4 md:px-6 lg:px-12 -mt-16 relative z-20 mb-20">
           <div className="max-w-[1400px] mx-auto">
@@ -242,7 +247,6 @@ export default async function BlogPage({
         </section>
       )}
 
-      {/* 4. DİĞER YAZILAR */}
       {gridPosts.length > 0 && (
         <section className={`px-6 lg:px-12 pb-32 ${!isFirstPage ? "pt-16" : ""}`}>
           <div className="max-w-[1400px] mx-auto">
@@ -250,7 +254,8 @@ export default async function BlogPage({
             {isFirstPage && (
               <div className="flex items-center justify-between border-b-2 border-[#0B2341]/10 pb-4 mb-12">
                 <h3 className="font-[family-name:var(--font-montserrat)] text-xl font-black uppercase tracking-tight text-[#0B2341]">
-                  {currentCategory ? `${typeof categories.find((c:any) => c.slug === currentCategory)?.title === 'string' ? categories.find((c:any) => c.slug === currentCategory)?.title : (categories.find((c:any) => c.slug === currentCategory)?.title?.[lang] || "Kategori")} Yazıları` : text.recent}
+                  {/* YENİ GÜVENLİK AĞI: categories dizisi boşsa find çalışırken çökmesin diye categories?.find yaptık */}
+                  {currentCategory ? `${typeof categories?.find((c:any) => c.slug === currentCategory)?.title === 'string' ? categories?.find((c:any) => c.slug === currentCategory)?.title : (categories?.find((c:any) => c.slug === currentCategory)?.title?.[lang] || "Kategori")} Yazıları` : text.recent}
                 </h3>
               </div>
             )}
