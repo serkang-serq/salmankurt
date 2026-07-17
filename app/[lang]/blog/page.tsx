@@ -12,17 +12,15 @@ async function getBlogData(page: number, categorySlug: string = "") {
   const start = (page - 1) * POSTS_PER_PAGE;
   const end = start + POSTS_PER_PAGE;
 
-  const filter = categorySlug 
-    ? `_type == "post" && defined(categories) && $categorySlug in categories[]->slug.current` 
-    : `_type == "post"`;
+  const categoryFilter = categorySlug ? `&& "${categorySlug}" in categories[]->slug.current` : ``;
 
   const query = `{
-    "categories": *[_type == "category"] | order(_createdAt desc) {
+    "categories": *[_type == "category"] | order(title.en asc) {
       _id,
       title,
       "slug": slug.current
     },
-    "posts": *[${filter}] | order(publishedAt desc, _createdAt desc)[$start...$end] {
+    "posts": *[_type == "post" ${categoryFilter}] | order(publishedAt desc, _createdAt desc)[$start...$end] {
       _id,
       title,
       slug,
@@ -32,12 +30,11 @@ async function getBlogData(page: number, categorySlug: string = "") {
       excerpt,
       "categories": categories[]-> { title, "slug": slug.current }
     },
-    "total": count(*[${filter}])
+    "total": count(*[_type == "post" ${categoryFilter}])
   }`;
   
-  // Hata durumunda site çökmesin diye try-catch ekliyoruz
   try {
-    const result = await client.fetch(query, { start, end, categorySlug: categorySlug || "" });
+    const result = await client.fetch(query, { start, end });
     return result;
   } catch (error) {
     console.error("Sanity Fetch Hatası:", error);
@@ -75,7 +72,6 @@ export default async function BlogPage({
   const currentPage = Number(resolvedSearchParams?.page) || 1;
   const currentCategory = resolvedSearchParams?.category || "";
   
-  // YENİ GÜVENLİK AĞI: Eğer veri undefined/null dönerse site çökmesin diye boş diziler atıyoruz
   const data = await getBlogData(currentPage, currentCategory);
   const posts = data?.posts || [];
   const categories = data?.categories || [];
@@ -93,6 +89,7 @@ export default async function BlogPage({
       title: "THE GLOBAL JOURNAL.",
       desc: "Exclusive perspectives on luxury travel, global real estate investments, and executive market intelligence by Salman Kurt.",
       allCategories: "All Categories",
+      exploreTitle: "Explore Topics",
       emptyTitle: "Curating Content",
       emptyDesc: "Our editorial team is currently preparing exclusive insights for this category. Please check back soon.",
       featuredBadge: "Featured",
@@ -108,6 +105,7 @@ export default async function BlogPage({
       title: "KÜRESEL GÜNLÜK.",
       desc: "Lüks seyahat, küresel gayrimenkul yatırımları ve Salman Kurt tarafından sunulan pazar analizleri üzerine özel perspektifler.",
       allCategories: "Tüm Kategoriler",
+      exploreTitle: "Konuları Keşfet",
       emptyTitle: "İçerik Hazırlanıyor",
       emptyDesc: "Editöryal ekibimiz bu kategori için özel içerikler hazırlamaktadır. Lütfen daha sonra tekrar ziyaret edin.",
       featuredBadge: "Öne Çıkan",
@@ -130,6 +128,7 @@ export default async function BlogPage({
   return (
     <main className="bg-[#F8F8F8] min-h-screen">
       
+      {/* 1. GİRİŞ (HERO) VE KATEGORİ MENÜSÜ */}
       <section className="pt-32 pb-40 px-6 lg:px-12 bg-[#0B2341] text-center border-b-4 border-[#C9A227] relative">
         <div className="max-w-[1000px] mx-auto relative z-10">
           <p className="text-[#C9A227] text-xs font-bold uppercase tracking-[0.3em] mb-4">
@@ -142,42 +141,49 @@ export default async function BlogPage({
             {text.desc}
           </p>
 
-          <div className="flex flex-wrap gap-3 md:gap-4 justify-center items-center pb-4">
-            <Link 
-              href={`/${lang}/blog`} 
-              className={`px-8 py-3 text-[10px] uppercase font-black tracking-[0.2em] whitespace-nowrap transition-all duration-300 ${
-                !currentCategory 
-                  ? 'bg-[#C9A227] text-[#0B2341] shadow-[0_0_20px_rgba(201,162,39,0.3)]' 
-                  : 'border border-[#C9A227]/30 text-[#C9A227] hover:bg-[#C9A227]/10 hover:border-[#C9A227]'
-              }`}
-            >
-              {text.allCategories}
-            </Link>
-            
-            {categories?.map((c: any) => {
-              if (!c.slug) return null;
-              const categoryName = typeof c.title === 'string' 
-                ? c.title 
-                : (c.title?.[lang] || c.title?.tr || "İsimsiz Kategori");
+          {/* YENİ ZARİF EDİTORYAL KATEGORİ MENÜSÜ */}
+          <div className="pt-10 border-t border-white/10 max-w-4xl mx-auto">
+            <span className="block text-white/30 text-[9px] font-bold uppercase tracking-[0.3em] mb-6">
+              {text.exploreTitle}
+            </span>
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-6">
+              <Link 
+                href={`/${lang}/blog`} 
+                className={`text-[10px] md:text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 ${
+                  !currentCategory 
+                    ? 'text-[#C9A227] border-b border-[#C9A227] pb-1' 
+                    : 'text-white/50 hover:text-white'
+                }`}
+              >
+                {text.allCategories}
+              </Link>
+              
+              {categories?.map((c: any) => {
+                if (!c.slug) return null;
+                const categoryName = typeof c.title === 'string' 
+                  ? c.title 
+                  : (c.title?.[lang] || c.title?.tr || "İsimsiz Kategori");
 
-              return (
-                <Link 
-                  key={c._id} 
-                  href={`/${lang}/blog?category=${c.slug}`} 
-                  className={`px-8 py-3 text-[10px] uppercase font-black tracking-[0.2em] whitespace-nowrap transition-all duration-300 ${
-                    currentCategory === c.slug 
-                      ? 'bg-[#C9A227] text-[#0B2341] shadow-[0_0_20px_rgba(201,162,39,0.3)]' 
-                      : 'border border-[#C9A227]/30 text-[#C9A227] hover:bg-[#C9A227]/10 hover:border-[#C9A227]'
-                  }`}
-                >
-                  {categoryName}
-                </Link>
-              );
-            })}
+                return (
+                  <Link 
+                    key={c._id} 
+                    href={`/${lang}/blog?category=${c.slug}`} 
+                    className={`text-[10px] md:text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 ${
+                      currentCategory === c.slug 
+                        ? 'text-[#C9A227] border-b border-[#C9A227] pb-1' 
+                        : 'text-white/50 hover:text-white'
+                    }`}
+                  >
+                    {categoryName}
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
+      {/* 2. BOŞ KATEGORİ UYARISI */}
       {posts.length === 0 && (
         <section className="py-32 px-6 text-center">
           <div className="max-w-2xl mx-auto flex flex-col items-center">
@@ -198,6 +204,7 @@ export default async function BlogPage({
         </section>
       )}
 
+      {/* 3. ÖNE ÇIKAN YAZI */}
       {featuredPost && (
         <section className="px-4 md:px-6 lg:px-12 -mt-16 relative z-20 mb-20">
           <div className="max-w-[1400px] mx-auto">
@@ -247,6 +254,7 @@ export default async function BlogPage({
         </section>
       )}
 
+      {/* 4. DİĞER YAZILAR */}
       {gridPosts.length > 0 && (
         <section className={`px-6 lg:px-12 pb-32 ${!isFirstPage ? "pt-16" : ""}`}>
           <div className="max-w-[1400px] mx-auto">
@@ -254,7 +262,6 @@ export default async function BlogPage({
             {isFirstPage && (
               <div className="flex items-center justify-between border-b-2 border-[#0B2341]/10 pb-4 mb-12">
                 <h3 className="font-[family-name:var(--font-montserrat)] text-xl font-black uppercase tracking-tight text-[#0B2341]">
-                  {/* YENİ GÜVENLİK AĞI: categories dizisi boşsa find çalışırken çökmesin diye categories?.find yaptık */}
                   {currentCategory ? `${typeof categories?.find((c:any) => c.slug === currentCategory)?.title === 'string' ? categories?.find((c:any) => c.slug === currentCategory)?.title : (categories?.find((c:any) => c.slug === currentCategory)?.title?.[lang] || "Kategori")} Yazıları` : text.recent}
                 </h3>
               </div>
@@ -307,6 +314,7 @@ export default async function BlogPage({
               ))}
             </div>
 
+            {/* SAYFALAMA */}
             {totalPages > 1 && (
               <div className="mt-20 flex items-center justify-center gap-2">
                 {currentPage > 1 && (
