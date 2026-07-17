@@ -142,7 +142,7 @@ export default async function BlogPage({
             {text.desc}
           </p>
 
-          <div className="flex overflow-x-auto gap-4 justify-start md:justify-center items-center pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div className="flex flex-wrap gap-3 md:gap-4 justify-center items-center pb-4">
             <Link 
               href={`/${lang}/blog`} 
               className={`px-8 py-3 text-[10px] uppercase font-black tracking-[0.2em] whitespace-nowrap transition-all duration-300 ${
