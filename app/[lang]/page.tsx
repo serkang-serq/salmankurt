@@ -5,7 +5,6 @@ import { urlFor } from "@/sanity/lib/image";
 import HomeContactForm from "../components/HomeContactForm";
 import { getDictionary } from "../../dictionaries/get-dictionary";
 
-// YENİ GÜVENLİK: Sorguyu çok dilli yapıya uygun hale getirdik. Karmaşık body filtrelerini kaldırdık.
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
@@ -38,11 +37,34 @@ export default async function HomePage({
 
   const blogs = await getLatestBlogs();
 
-  const partners = [
-    "Sea Drop Travel", "Denizcan Kurt", "Samyeli Eczanesi", "Erzadeoğlu Mimarlık"
+  // YENİ EKLENEN KISIM: Eski düz metin partnerler yerine linkli ve logolu premium yapı eklendi
+  const partnersData = [
+    {
+      name: "Sea Drop Travel",
+      href: "https://seadroptravel.com", 
+      isExternal: true,
+      logo: "/logo11.png"
+    },
+    {
+      name: "Denizcan Kurt",
+      href: "https://denizcankurt.com", 
+      isExternal: true,
+      logo: "/logo22.png"
+    },
+    {
+      name: "Samyeli Eczanesi",
+      href: `/${lang}/samyeli-eczanesi`, 
+      isExternal: false,
+      logo: "/logo33.png"
+    },
+    {
+      name: "Erzadeoğlu Mimarlık",
+      href: `/${lang}/erzadeoglu-mimarlik`, 
+      isExternal: false,
+      logo: "/logo44.png"
+    }
   ];
 
-  // Yorumları dile göre ayırıyoruz
   const reviews = lang === "tr" ? [
     {
       name: "Sarah M.",
@@ -83,7 +105,6 @@ export default async function HomePage({
     }
   ];
 
-  // SSS içeriğini dile göre ayırıyoruz
   const faqs = lang === "tr" ? [
     {
       q: "Kurumsal operasyonlarınız hangi coğrafi bölgeleri kapsıyor?",
@@ -134,9 +155,9 @@ export default async function HomePage({
           </div>
           
           <h1 className="font-[family-name:var(--font-montserrat)] text-5xl sm:text-7xl md:text-[7.5rem] font-black uppercase tracking-tighter leading-[1.1] text-[#0B2341] mb-12">
-  {dict.home.heroTitle1} <br />
-  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2341] via-[#0B2341] to-[#C9A227]">{dict.home.heroTitle2}</span>
-</h1>
+            {dict.home.heroTitle1} <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B2341] via-[#0B2341] to-[#C9A227]">{dict.home.heroTitle2}</span>
+          </h1>
           
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
             <div className="max-w-2xl">
@@ -156,29 +177,54 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* 2. GLOBAL PARTNERS */}
-      <section className="bg-white border-y border-[#0B2341]/10 py-16 px-6 lg:px-12 relative">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6">
-            <div className="text-left w-full md:w-auto">
-              <p className="text-[#C9A227] font-bold uppercase tracking-[0.2em] text-xs mb-2">{dict.home.partnersPreTitle}</p>
-              <h2 className="font-[family-name:var(--font-montserrat)] text-3xl font-black uppercase tracking-tight text-[#0B2341]">{dict.home.partnersTitle1} <span className="opacity-30">{dict.home.partnersTitle2}</span></h2>
+      {/* 2. GLOBAL PARTNERS (YENİ PREMIUM LOGO IZGARASI BÖLÜMÜ) */}
+      <section className="bg-white py-20 border-y border-[#0B2341]/10 px-6 lg:px-12 relative">
+        <div className="max-w-[1400px] mx-auto">
+          
+          {/* Üst Kısım: Başlık ve Ayırıcı Çizgi (Dictionary'e bağlandı) */}
+          <div className="flex items-end gap-8 mb-12">
+            <div className="shrink-0 text-left">
+              <h4 className="text-[#C9A227] text-xs font-bold tracking-[0.2em] uppercase mb-2">
+                {dict.home.partnersPreTitle}
+              </h4>
+              <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter font-[family-name:var(--font-montserrat)]">
+                <span className="text-[#0B2341] mr-3">{dict.home.partnersTitle1}</span>
+                <span className="text-[#B0B8C1]">{dict.home.partnersTitle2}</span>
+              </h2>
             </div>
-            <div className="hidden md:block w-full max-w-md h-[1px] bg-[#0B2341]/10 mb-3"></div>
+            {/* Sağa uzayan ince editoryal çizgi */}
+            <div className="hidden md:block flex-1 h-[1px] bg-gray-200 mb-2 md:mb-3"></div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center text-center">
-            {partners.map((partner, idx) => (
-              <div 
-                key={idx} 
-                className="h-24 px-4 bg-[#F8F8F8] border border-[#0B2341]/5 shadow-[0_4px_20px_-10px_rgba(11,35,65,0.05)] hover:border-[#C9A227] hover:shadow-lg hover:bg-white transition-all duration-300 flex items-center justify-center group"
-              >
-                <span className="font-[family-name:var(--font-montserrat)] text-[11px] md:text-xs font-black uppercase tracking-widest text-[#0B2341]/80 group-hover:text-[#0B2341] transition-colors">
-                  {partner}
-                </span>
-              </div>
-            ))}
+          {/* Alt Kısım: Hover efektli logo ızgarası */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {partnersData.map((partner) => {
+              const LinkComponent = partner.isExternal ? "a" : Link;
+              const linkProps = partner.isExternal
+                ? { href: partner.href, target: "_blank", rel: "noopener noreferrer" } 
+                : { href: partner.href }; 
+
+              return (
+                <LinkComponent
+                  key={partner.name}
+                  {...linkProps}
+                  className="group flex items-center justify-center h-[120px] bg-[#F8F9FA] border border-gray-100 transition-all duration-500 hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 overflow-hidden px-8 py-6"
+                  aria-label={`${partner.name} web sitesini ziyaret et`}
+                >
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <Image
+                      src={partner.logo}
+                      alt={`${partner.name} Logo`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      className="object-contain filter grayscale opacity-50 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100"
+                    />
+                  </div>
+                </LinkComponent>
+              );
+            })}
           </div>
+          
         </div>
       </section>
 
@@ -383,7 +429,6 @@ export default async function HomePage({
           {blogs?.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {blogs.map((post: any) => {
-                // YENİ GÜVENLİK: Başlık ve özet alanlarını çift dile göre yakala (çökmeyi engelleyen hayat kurtarıcı kod)
                 const postTitle = typeof post.title === 'string' 
                   ? post.title 
                   : (post.title?.[lang] || post.title?.tr || "Makale");
@@ -490,7 +535,7 @@ export default async function HomePage({
           </div>
 
           <div className="lg:col-span-7">
-            <HomeContactForm />
+          <HomeContactForm lang={lang} />
           </div>
 
         </div>

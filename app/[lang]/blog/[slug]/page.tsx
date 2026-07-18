@@ -98,38 +98,58 @@ export default async function BlogPostPage({
   const categoryName = typeof categoryData === 'string' ? categoryData : (categoryData?.[lang] || categoryData?.tr || "Blog");
   const bodyContent = Array.isArray(post.body) ? post.body : (post.body?.[lang] || post.body?.tr);
 
-  // Sosyal Medya Paylaşım Linkleri (Mevcut sayfa için)
+  // Sosyal Medya Paylaşım Linkleri
   const encodedTitle = encodeURIComponent(title);
   const shareLinks = {
     x: `https://twitter.com/intent/tweet?text=${encodedTitle}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=`, // Proje canlıya çıkınca domain eklenebilir
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=`, 
     whatsapp: `https://api.whatsapp.com/send?text=${encodedTitle}`
   };
 
   return (
     <main className="bg-[#F8F8F8] min-h-screen pb-32">
       
-      {/* 1. HERO ALANI */}
-      <section className="relative w-full h-[60vh] min-h-[500px] flex items-end justify-center bg-[#0B2341]">
+      {/* 1. HERO ALANI (TAMAMEN YENİLENDİ: PREMIUM EDİTORYAL GÖRÜNÜM) */}
+      <section className="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden bg-[#0B2341]">
+        
+        {/* Arka Plan Resmi */}
         {post.mainImage && (
           <Image 
             src={urlFor(post.mainImage).url()} 
             alt={title} 
             fill 
             priority
-            className="object-cover opacity-40"
+            className="object-cover"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#F8F8F8] via-[#0B2341]/60 to-transparent"></div>
         
-        <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12 pb-24 text-center">
-          <p className="text-[#C9A227] text-[10px] font-bold uppercase tracking-[0.3em] mb-6 drop-shadow-md">
-            {categoryName} &nbsp;&nbsp;|&nbsp;&nbsp; {formatDate(post.publishedAt, post._createdAt)}
-          </p>
-          <h1 className="font-[family-name:var(--font-montserrat)] text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#0B2341] mb-8 leading-tight drop-shadow-sm">
+        {/* Koyu Lacivert Karartma (Overlay) - Yazıların Patlamasını Sağlar */}
+        <div className="absolute inset-0 bg-[#0B2341]/80"></div>
+
+        {/* Arkadaki Devasa Filigran Yazı (Şeffaflığı Çok Düşük) */}
+        <div className="absolute z-0 flex items-center justify-center w-full top-1/2 -translate-y-1/2 overflow-hidden pointer-events-none select-none">
+          <span className="text-[15vw] font-serif italic text-white/5 whitespace-nowrap font-black uppercase tracking-widest">
+            {categoryName}
+          </span>
+        </div>
+        
+        {/* Öndeki Asıl İçerik - Tam Ortalı ve Beyaz Metin */}
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
+          
+          <div className="flex items-center justify-center gap-4 text-[#C9A227] text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] mb-6 drop-shadow-md">
+            <span>{categoryName}</span>
+            <span className="w-1 h-1 bg-[#C9A227] rounded-full"></span>
+            <span>{formatDate(post.publishedAt, post._createdAt)}</span>
+          </div>
+
+          <h1 className="font-[family-name:var(--font-montserrat)] text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white mb-8 leading-[1.2] drop-shadow-xl">
             {title}
           </h1>
+          
         </div>
+
+        {/* Alt Kısımdaki Beyaz Alana Yumuşak Geçiş (Degrade) */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#F8F8F8] to-transparent z-10"></div>
       </section>
 
       {/* 2. ANA İÇERİK VE SİDEBAR (GRID YAPISI) */}

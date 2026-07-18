@@ -18,11 +18,9 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  // İŞTE ÇÖZÜM BURADA: Sadece string olduğunu belirttik
   params: Promise<{ lang: string }>; 
 }) {
   const resolvedParams = await params;
-  // Gelen veriyi burada güvenli bir şekilde "en" veya "tr" olarak kilitliyoruz
   const lang = (resolvedParams?.lang === 'tr' ? 'tr' : 'en') as "en" | "tr";
 
   return (
@@ -30,10 +28,10 @@ export default async function RootLayout({
       <body className={`${inter.variable} ${montserrat.variable} font-sans bg-[#F8F8F8] text-[#0B2341] selection:bg-[#C9A227] selection:text-white flex flex-col min-h-screen`}>
         
         {/* DUYURU BARI */}
-        <div className="bg-[#C9A227] text-[#0B2341] text-xs md:text-sm font-black uppercase tracking-[0.15em] text-center py-2.5 px-4 cursor-pointer hover:bg-[#0B2341] hover:text-[#C9A227] transition-colors duration-300 relative z-[150]">
+        <div className="bg-[#C9A227] text-[#0B2341] text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-center py-3 px-4 cursor-pointer hover:bg-[#0B2341] hover:text-[#C9A227] transition-colors duration-300 relative z-[210]">
           {lang === "tr" 
-            ? "GÜNCEL BİLGİ: 2026 İÇİN STRATEJİK ABD GAYRİMENKUL KONUMLANDIRMASI →" 
-            : "LATEST INSIGHT: STRATEGIC US REAL ESTATE POSITIONING FOR 2026 →"}
+            ? "ÖNE ÇIKAN TUR: SEA DROP TRAVEL İLE ÖZEL EFES DENEYİMİNİ KEŞFEDİN →" 
+            : "FEATURED TOUR: DISCOVER A PRIVATE EPHESUS EXPERIENCE WITH SEA DROP TRAVEL →"}
         </div>
 
         <Navbar lang={lang} />
