@@ -163,54 +163,135 @@
     "florida": {
       "seo": {
         "title": "Miami Lüks Gayrimenkul & Satılık Evler | Denizcan Kurt",
-        "description": "Miami'de satılık evler, Florida gayrimenkul yatırımı ve lüks sahil mülkleri. Türk yatırımcılar ve ev alıcıları için uzman emlak danışmanlığı."
+        "description": "Miami'de satılık evler, Florida gayrimenkul yatırımı ve lüks sahil mülkleri. Tüm Florida bölgesi için profesyonel emlak danışmanlığı."
       },
-      "heroPreTitle": "Florida Gayrimenkul & Yatırım",
-      "heroTitle1": "Miami'de",
-      "heroTitle2": "Satın Alın &",
-      "heroTitle3": "Yatırım Yapın.",
-      "heroDesc": "Miami'de hayalinizdeki evi satın almak, yüksek getirili Florida gayrimenkullerine yatırım yapmak veya kusursuz bir okyanus manzaralı yalı bulmak mı istiyorsunuz? Geleceğinizi güvence altına almak için sektör uzmanlarıyla çalışın.",
-      "agentRole": "Baş Gayrimenkul Danışmanı",
-      "agentName": "Denizcan Kurt",
-      "agentDesc": "Ev alıcılarına, emlak yatırımcılarına ve uluslararası Türk müşterilere Güney Florida'nın dinamik lüks emlak piyasasında en karlı kararları almaları için rehberlik etmeye adanmıştır.",
-      "galleryTitle1": "Öne Çıkan",
-      "galleryTitle2": "Portföyler.",
-      "galleryDesc": "Güney Florida'nın en prestijli su kenarı villaları ve premium rezidanslarına özel bir bakış.",
-      "galleryBtn": "Tüm Miami Mülklerini İncele",
-      "propImage": "Lüks Gayrimenkul İlan Görseli",
-      "cityTag": "Miami, FL",
-      "portPreTitle": "Özel Portföyü",
-      "portTitle": "Keşfedin",
-      "propertyTypes": [
-        "Miami'de Satılık Evler", "Miami Beach Lüks Evler", "Miami Okyanus Manzaralı Evler",
-        "Miami'de Satılık Lüks Daireler", "Florida'da Yeni Proje Evler", "Miami'de Yüksek Getirili Yatırım",
-        "Güney Florida'da Tatil Villaları", "Downtown Miami Rezidansları", "Brickell Lüks Daireler",
-        "Coral Gables Malikâneleri", "Sunny Isles Beach Evleri", "Aventura Lüks Gayrimenkul",
-        "Fort Lauderdale Su Kenarı Evleri", "Boca Raton Lüks Mülkler", "Amerika'da Emlak Yatırımı"
-      ],
-      "quote": "\"Denizcan Kurt, gayrimenkul alım veya satım sürecinin her aşamasında stratejik ve profesyonel rehberlik sağlar. Güney Florida konut pazarı hakkında derin bir bilgiye sahip olan Denizcan; Amerika'da ilk kez ev alacaklar, deneyimli emlak yatırımcıları ve ABD'nin en hızlı büyüyen pazarlarına yatırım yapmak isteyen Türk ve uluslararası müşterilerle birebir çalışır.\"",
-      "advPreTitle": "Avantajımız",
-      "advTitle1": "Neden",
-      "advTitle2": "Denizcan Kurt?",
-      "advDesc": "İster Miami'de rüya gibi bir ev, ister bir sahil tatil mülkü veya yüksek ROI (Yatırım Getirisi) sağlayan bir gayrimenkul fırsatı arıyor olun; Denizcan Kurt, en karlı ve güvenli kararları almanıza yardımcı olur.",
-      "reasons": [
-        "Kişiselleştirilmiş birebir gayrimenkul concierge hizmeti", "Miami ve Güney Florida pazarına dair derin uzmanlık",
-        "Lüks ev ve prestijli sahil mülkü uzmanlığı", "Kapsamlı yatırım mülkü ve getiri (ROI) analizi",
-        "Sorunsuz yer değiştirme ve Amerika'ya taşınma (relokasyon) desteği", "Amerika'da ilk kez ev alacaklara stratejik rehberlik",
-        "Türk ve uluslararası yatırımcılar için özel finansal destek ağı", "Agresif ve profesyonel fiyat müzakere becerileri",
-        "Dürüst, şeffaf ve tamamen yatırımcı çıkarlarını koruyan yaklaşım"
-      ],
-      "ctaTitle": "Bir Sonraki Adımı Atın.",
-      "ctaDesc": "Miami'de ev satın almaya, Florida'daki mülkünüzü en yüksek piyasa değerinden satmaya veya Güney Florida emlak pazarına güvenle yatırım yapmaya hazırsanız, gayrimenkul hedeflerinize ulaşmak için Denizcan Kurt ile bugün iletişime geçin.",
-      "ctaCall": "Ara:",
-      "ctaMsg": "Mesaj Gönder",
-      "seoTags": [
-        "Miami Satılık Ev", "Miami Lüks Gayrimenkul", "Amerika Ev Alma", 
-        "Satılık Rezidans", "Uluslararası Emlak Yatırımı", "Florida Satılık Villa", "Miami Gayrimenkul Danışmanı"
-      ],
-      "images": {
-        "miamiSkylineAlt": "Miami lüks gayrimenkul ve sahil şeridi manzarası",
-        "interiorAlt": "Güney Florida'da modern tasarımlı lüks daire iç mekanı"
+      "hero": {
+        "title": "Denizcan Kurt – Tüm Florida'ya Hizmet Veren Lisanslı Miami Gayrimenkul Profesyoneli",
+        "desc1": "Eğer Florida konut piyasasını çok iyi anlayan güvenilir bir Miami emlak danışmanı ve müşteri memnuniyetini gerçekten ilk sıraya koyan deneyimli bir profesyonel arıyorsanız, Denizcan Kurt size yardıma hazır.",
+        "desc2": "Miami'de ev satın almayı, mülkünüzü satmayı, Florida'ya taşınmayı veya Florida gayrimenkullerine yatırım yapmayı planlıyorsanız, Denizcan Kurt her adımda size profesyonel rehberlik sunar."
+      },
+      "trustedRealtor": {
+        "title": "Güvenilir Miami Emlak Danışmanınız",
+        "desc1": "Miami gayrimenkul piyasası, Amerika Birleşik Devletleri'ndeki en heyecan verici ve rekabetçi pazarlardan biridir. Doğru evi bulmak veya mülkünüzü en iyi fiyata satmak; yerel bilgi, müzakere becerileri ve özveri gerektirir.",
+        "servingTitle": "Lisanslı bir Gayrimenkul Profesyoneli olarak Denizcan Kurt, gururla şu bölgelere hizmet vermektedir:",
+        "cities": [
+          "Miami", "Miami Beach", "Brickell", "Downtown Miami", "Aventura", 
+          "Sunny Isles Beach", "Fort Lauderdale", "Hollywood", "Boca Raton", 
+          "Orlando", "Tampa", "Jacksonville", "Naples", "Sarasota"
+        ],
+        "servingAllTitle": "Tüm Florida'ya Hizmet",
+        "servingAllDesc": "İster başka bir eyaletten isterseniz uluslararası olarak taşınıyor olun, Denizcan Kurt bu süreci sizin için basit ve stressiz hale getirebilir."
+      },
+      "buyHome": {
+        "title": "Miami'de Ev Satın Alın",
+        "subtitle": "Miami'de satılık ev mi arıyorsunuz?",
+        "interestedInTitle": "İlgilendiğiniz mülk tipi ne olursa olsun:",
+        "interestedInList": [
+          "Lüks sahil evleri", "Okyanus manzaralı daireler", "Downtown Miami apartmanları", 
+          "Müstakil aile evleri", "Yeni inşaat (sıfır) evler", "Yatırım amaçlı mülkler", 
+          "Tatil evleri", "Emeklilik evleri"
+        ],
+        "desc1": "Denizcan Kurt, bütçenize ve yaşam tarzınıza en uygun mükemmel mülkü bulmanıza yardımcı olacaktır.",
+        "marketTitle": "Miami Satılık Ev Fırsatları",
+        "marketDesc": "Miami pazarı aşağıdaki alanlarda inanılmaz fırsatlar sunar:",
+        "marketList": [
+          "Okyanus Manzaralı Condominium'lar", "Lüks Villalar", "Müstakil Aile Evleri", 
+          "Townhouse (Sıra Evler)", "Güvenlikli Siteler", "Yatırım Amaçlı Mülkler", "Kira Getirili Mülkler"
+        ],
+        "seoSearchTitle": "Eğer internette şunları arıyorsanız:",
+        "seoSearchList": [
+          "Miami Satılık Evler", "Miami'de Satılık Evler", "Miami'den Ev Satın Al", 
+          "Miami Emlakçı", "Miami'deki En İyi Emlakçı", "Florida Emlak Danışmanı"
+        ],
+        "seoSearchOutro": "kesinlikle doğru yere geldiniz."
+      },
+      "rentals": {
+        "title": "Miami'de Kiralık Ev mi Arıyorsunuz?",
+        "desc1": "Doğru kiralık mülkü bulmak bazen zor olabilir.",
+        "clientsTitle": "Denizcan Kurt şu arayışlarda olan müşterilere yardımcı olur:",
+        "rentalList": [
+          "Miami Kiralık Evler", "Kiralık Daireler", "Lüks Apartmanlar", 
+          "Su Kenarı Kiralık Mülkler", "Kiralık Aile Evleri", "Eşyalı Kiralıklar", 
+          "Uzun Dönem Kiralıklar", "Taşınma (Relocation) Amaçlı Kiralıklar"
+        ],
+        "desc2": "İster iş için, ister emeklilik için, isterseniz yeni bir başlangıç için taşınıyor olun; bu süreç boyunca tamamen kişiselleştirilmiş bir destek alacaksınız."
+      },
+      "sellHome": {
+        "title": "Evinizi Güvenle Satın",
+        "subtitle": "Evinizi satmayı mı düşünüyorsunuz?",
+        "helpsTitle": "Denizcan Kurt mülk sahiplerine şu konularda yardımcı olur:",
+        "benefits": [
+          "Daha hızlı satış", "Maksimum piyasa değerini elde etme", "Profesyonel pazarlama", 
+          "Yüksek kaliteli fotoğraf çekimi", "Güçlü çevrimiçi görünürlük", "Alıcı müzakereleri", 
+          "Sözleşme rehberliği", "Sorunsuz tapu devri (closing) süreci"
+        ],
+        "outro": "Evin listelenmesinden tapu devrine kadar her detay profesyonelce yönetilir."
+      },
+      "relocate": {
+        "title": "Florida'ya mı Taşınıyorsunuz?",
+        "subtitle": "Florida'ya taşınma planınız mı var?",
+        "fromTitle": "Nereden taşınıyor olursanız olun:",
+        "fromList": [
+          "New York", "California", "Texas", "Kanada", "Avrupa", "Türkiye", "Güney Amerika"
+        ],
+        "desc1": "Denizcan Kurt size eksiksiz bir taşınma (relocation) desteği sunar.",
+        "understandTitle": "Müşterilerine şu konularda rehberlik eder:",
+        "understandList": [
+          "En iyi mahalleler", "Okul bölgeleri", "Emlak vergileri", "Ev sigortaları", 
+          "Yatırım fırsatları", "Yaşam maliyetleri", "Kiralama seçenekleri", "Finansman / Kredi"
+        ]
+      },
+      "whyChoose": {
+        "title": "Neden Denizcan Kurt'u Seçmelisiniz?",
+        "reasons": [
+          "Lisanslı Gayrimenkul Profesyoneli", "Dürüst ve Şeffaf İletişim", "Mükemmel İletişim Becerileri", 
+          "Derin Yerel Piyasa Bilgisi", "Kişiselleştirilmiş Hizmet", "Yatırım Rehberliği", 
+          "Konut Satış Uzmanlığı", "Kiralama Desteği", "İlk Kez Ev Alacaklara Destek", 
+          "Uluslararası Alıcı Deneyimi"
+        ],
+        "outro": "Müşteri memnuniyeti her zaman ilk sırada gelir."
+      },
+      "areasServedFooter": {
+        "title": "Hizmet Verilen Bölgeler",
+        "desc": "Denizcan Kurt, Florida genelindeki müşterilerine gururla hizmet vermektedir:",
+        "cities": [
+          "Miami", "Miami Beach", "Coral Gables", "Brickell", "Downtown Miami", 
+          "Sunny Isles Beach", "Fort Lauderdale", "Hollywood", "Boca Raton", 
+          "Palm Beach", "Orlando", "Tampa", "Naples", "Sarasota", "Jacksonville", "Tüm Florida"
+        ]
+      },
+      "servicesOverview": {
+        "title": "Gayrimenkul Hizmetleri",
+        "services": [
+          { "tag": "SATIN AL", "desc": "Hayalinizdeki evi bulun." },
+          { "tag": "SAT", "desc": "Mülkünüzü güvenle satın." },
+          { "tag": "TAŞIN", "desc": "Florida'ya taşınmak artık çok kolay." }
+        ]
+      },
+      "contactBlock": {
+        "title": "Denizcan Kurt ile İletişime Geçin",
+        "name": "Denizcan Kurt",
+        "role": "Lisanslı Gayrimenkul Profesyoneli",
+        "agency": "BAO Real Estate",
+        "location": "📍 Merkez: Miami – Tüm Florida'ya Hizmet",
+        "phone": "+1 (305) 490-7036",
+        "email": "Denizcan.Kurt21@gmail.com",
+        "commitment": "İster ilk evinizi satın alıyor, ister Florida emlak piyasasına yatırım yapıyor, isterseniz Miami'de lüks ev veya kiralık mülk arıyor olun; Denizcan Kurt, profesyonellik, dürüstlük ve olağanüstü müşteri hizmetiyle gayrimenkul hedeflerinize ulaşmanıza yardımcı olmaya kararlıdır.",
+        "slogan": "Satın Al • Sat • Taşın",
+        "footerTag": "Merkez: Miami – Tüm Florida'ya Hizmet"
+      },
+      "seoKeywords": {
+        "title": "SEO Anahtar Kelimeleri Doğal Şekilde Eklenmiştir",
+        "desc": "Bu yazıda doğal şekilde şu yüksek hacimli anahtar kelimeler yer alıyor:",
+        "keywords": [
+          "Miami Realtor", "Miami Real Estate Agent", "Licensed Realtor Miami", 
+          "Homes for Sale in Miami", "Houses for Sale in Miami", "Miami Luxury Homes", 
+          "Miami Condos for Sale", "Buy House in Miami", "Miami Rental Homes", 
+          "Apartments for Rent Miami", "Florida Realtor", "Florida Real Estate", 
+          "Real Estate Agent Florida", "Relocate to Florida", "Investment Property Miami", 
+          "Miami Property for Sale", "Best Realtor in Miami", "Buy Sell Relocate", 
+          "Serving All Florida", "Denizcan Kurt"
+        ]
       }
     },
     "contact": {

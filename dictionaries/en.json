@@ -165,52 +165,133 @@
         "title": "Miami Luxury Real Estate & Homes for Sale | Denizcan Kurt",
         "description": "Invest in Miami luxury real estate, waterfront homes, and South Florida properties. Expert guidance for international buyers and real estate investors."
       },
-      "heroPreTitle": "Florida Real Estate & Investments",
-      "heroTitle1": "Buy, Sell &",
-      "heroTitle2": "Invest",
-      "heroTitle3": "in Miami.",
-      "heroDesc": "Looking to buy a home in Miami, invest in high-yield Florida real estate, or find the perfect luxury waterfront property? Partner with industry experts to secure your future.",
-      "agentRole": "Lead Real Estate Professional",
-      "agentName": "Denizcan Kurt",
-      "agentDesc": "Dedicated to helping homebuyers, real estate investors, and international clients successfully navigate South Florida's dynamic luxury property market.",
-      "galleryTitle1": "Featured",
-      "galleryTitle2": "Portfolios.",
-      "galleryDesc": "A curated glimpse into South Florida's finest luxury waterfront homes and premium condos.",
-      "galleryBtn": "View All Miami Properties",
-      "propImage": "Luxury Property Listing Image",
-      "cityTag": "Miami, FL",
-      "portPreTitle": "Explore The",
-      "portTitle": "Property Portfolio",
-      "propertyTypes": [
-        "Homes for Sale in Miami", "Miami Beach Luxury Homes", "Waterfront Homes in Miami",
-        "Condos for Sale in Miami", "New Construction Homes in Florida", "Investment Properties in Miami",
-        "Vacation Homes in South Florida", "Downtown Miami Condos", "Brickell Luxury Condos",
-        "Coral Gables Homes", "Sunny Isles Beach Condos", "Aventura Luxury Real Estate",
-        "Fort Lauderdale Homes", "Boca Raton Luxury Properties", "Florida Investment Properties"
-      ],
-      "quote": "\"Denizcan Kurt provides professional, strategic guidance throughout every step of the real estate buying or selling process. With extensive knowledge of the South Florida housing market, Denizcan works closely with first-time homebuyers, experienced property investors, vacation home buyers, and international clients looking to invest in one of the fastest-growing real estate markets in the United States.\"",
-      "advPreTitle": "The Advantage",
-      "advTitle1": "Why Work With",
-      "advTitle2": "Denizcan Kurt?",
-      "advDesc": "Whether you're searching for a Miami dream home, a beachfront vacation property, or a high-return real estate investment opportunity, Denizcan Kurt is committed to helping you make informed, profitable decisions.",
-      "reasons": [
-        "Personalized one-on-one real estate concierge service", "Expert knowledge of the Miami and South Florida market",
-        "Luxury home and exclusive waterfront property specialist", "Comprehensive investment property and ROI analysis",
-        "Seamless relocation and global transition assistance", "Strategic first-time homebuyer guidance",
-        "Dedicated international buyer and investor support", "Aggressive, professional negotiation skills",
-        "Honest, transparent, and strictly client-focused approach"
-      ],
-      "ctaTitle": "Take the Next Step.",
-      "ctaDesc": "If you are ready to buy a house in Miami, sell your Florida property at top market value, or invest in South Florida real estate, contact Denizcan Kurt today to achieve your real estate goals.",
-      "ctaCall": "Call:",
-      "ctaMsg": "Send a Message",
-      "seoTags": [
-        "Miami Homes for Sale", "Luxury Homes in Miami", "Waterfront Homes", 
-        "Condos for Sale", "First-Time Home Buyers", "Investment Properties", "Relocation to Florida"
-      ],
-      "images": {
-        "miamiSkylineAlt": "Miami luxury real estate waterfront skyline view",
-        "interiorAlt": "Modern luxury condo interior in South Florida"
+      "hero": {
+        "title": "Denizcan Kurt – Licensed Miami Real Estate Professional Serving All Florida",
+        "desc1": "If you are looking for a trusted Miami real estate agent, an experienced professional who understands the Florida housing market, and someone who truly puts clients first, Denizcan Kurt is ready to help.",
+        "desc2": "Whether you are planning to buy a home in Miami, sell your property, relocate to Florida, or invest in Florida real estate, Denizcan Kurt offers professional guidance every step of the way."
+      },
+      "trustedRealtor": {
+        "title": "Your Trusted Miami Realtor",
+        "desc1": "The Miami real estate market is one of the most exciting and competitive markets in the United States. Finding the right home or selling your property at the best price requires local knowledge, negotiation skills, and dedication.",
+        "servingTitle": "As a Licensed Real Estate Professional, Denizcan Kurt proudly serves:",
+        "cities": [
+          "Miami", "Miami Beach", "Brickell", "Downtown Miami", "Aventura", 
+          "Sunny Isles Beach", "Fort Lauderdale", "Hollywood", "Boca Raton", 
+          "Orlando", "Tampa", "Jacksonville", "Naples", "Sarasota"
+        ],
+        "servingAllTitle": "Serving All Florida",
+        "servingAllDesc": "Whether you are relocating from another state or moving internationally, Denizcan Kurt can make the process simple and stress-free."
+      },
+      "buyHome": {
+        "title": "Buy a Home in Miami",
+        "subtitle": "Searching for homes for sale in Miami?",
+        "interestedInTitle": "Whether you're interested in:",
+        "interestedInList": [
+          "Luxury waterfront homes", "Beachfront condos", "Downtown Miami apartments", 
+          "Family homes", "New construction homes", "Investment properties", 
+          "Vacation homes", "Retirement homes"
+        ],
+        "desc1": "Denizcan Kurt will help you find the perfect property that matches your budget and lifestyle.",
+        "marketTitle": "Miami Homes for Sale",
+        "marketDesc": "The Miami market offers incredible opportunities including:",
+        "marketList": [
+          "Oceanfront Condominiums", "Luxury Villas", "Single Family Homes", 
+          "Townhomes", "Gated Communities", "Investment Properties", "Rental Properties"
+        ],
+        "seoSearchTitle": "If you're searching online for:",
+        "seoSearchList": [
+          "Miami Homes for Sale", "Houses for Sale in Miami", "Buy House in Miami", 
+          "Miami Realtor", "Best Realtor in Miami", "Florida Real Estate Agent"
+        ],
+        "seoSearchOutro": "you've come to the right place."
+      },
+      "rentals": {
+        "title": "Looking for Rental Homes in Miami?",
+        "desc1": "Finding the right rental property can be difficult.",
+        "clientsTitle": "Denizcan Kurt helps clients searching for:",
+        "rentalList": [
+          "Miami Rental Homes", "Apartments for Rent", "Luxury Apartments", 
+          "Waterfront Rentals", "Family Rental Homes", "Furnished Rentals", 
+          "Long-Term Rentals", "Relocation Rentals"
+        ],
+        "desc2": "Whether you're moving for work, retirement, or a fresh start, you'll receive personalized assistance throughout the process."
+      },
+      "sellHome": {
+        "title": "Sell Your Home with Confidence",
+        "subtitle": "Thinking about selling your home?",
+        "helpsTitle": "Denizcan Kurt helps homeowners:",
+        "benefits": [
+          "Sell faster", "Get maximum market value", "Professional marketing", 
+          "High-quality photography", "Online exposure", "Buyer negotiations", 
+          "Contract guidance", "Smooth closing process"
+        ],
+        "outro": "From listing to closing, every detail is professionally managed."
+      },
+      "relocate": {
+        "title": "Relocating to Florida?",
+        "subtitle": "Moving to Florida?",
+        "fromTitle": "Whether you're relocating from:",
+        "fromList": [
+          "New York", "California", "Texas", "Canada", "Europe", "Turkey", "South America"
+        ],
+        "desc1": "Denizcan Kurt provides complete relocation assistance.",
+        "understandTitle": "He helps clients understand:",
+        "understandList": [
+          "Best neighborhoods", "Schools", "Property taxes", "Home insurance", 
+          "Investment opportunities", "Cost of living", "Rental options", "Financing"
+        ]
+      },
+      "whyChoose": {
+        "title": "Why Choose Denizcan Kurt?",
+        "reasons": [
+          "Licensed Real Estate Professional", "Honest and Transparent", "Excellent Communication", 
+          "Local Market Knowledge", "Personalized Service", "Investment Guidance", 
+          "Residential Sales", "Rental Assistance", "First-Time Home Buyer Support", 
+          "International Buyer Experience"
+        ],
+        "outro": "Customer satisfaction always comes first."
+      },
+      "areasServedFooter": {
+        "title": "Areas Served",
+        "desc": "Denizcan Kurt proudly serves clients throughout Florida including:",
+        "cities": [
+          "Miami", "Miami Beach", "Coral Gables", "Brickell", "Downtown Miami", 
+          "Sunny Isles Beach", "Fort Lauderdale", "Hollywood", "Boca Raton", 
+          "Palm Beach", "Orlando", "Tampa", "Naples", "Sarasota", "Jacksonville", "All Florida"
+        ]
+      },
+      "servicesOverview": {
+        "title": "Real Estate Services",
+        "services": [
+          { "tag": "BUY", "desc": "Find your dream home." },
+          { "tag": "SELL", "desc": "Sell your property with confidence." },
+          { "tag": "RELOCATE", "desc": "Moving to Florida made easy." }
+        ]
+      },
+      "contactBlock": {
+        "title": "Contact Denizcan Kurt",
+        "name": "Denizcan Kurt",
+        "role": "Licensed Real Estate Professional",
+        "agency": "BAO Real Estate",
+        "location": "Based in Miami – Serving All Florida",
+        "phone": "+1 (305) 490-7036",
+        "email": "Denizcan.Kurt21@gmail.com",
+        "commitment": "Whether you're buying your first home, investing in Florida real estate, searching for luxury homes in Miami, or looking for rental properties, Denizcan Kurt is committed to helping you achieve your real estate goals with professionalism, honesty, and exceptional customer service.",
+        "slogan": "Buy • Sell • Relocate",
+        "footerTag": "Based in Miami – Serving All Florida"
+      },
+      "seoKeywords": {
+        "title": "SEO Keywords Naturally Included",
+        "desc": "Bu yazıda doğal şekilde şu yüksek hacimli anahtar kelimeler yer alıyor:",
+        "keywords": [
+          "Miami Realtor", "Miami Real Estate Agent", "Licensed Realtor Miami", 
+          "Homes for Sale in Miami", "Houses for Sale in Miami", "Miami Luxury Homes", 
+          "Miami Condos for Sale", "Buy House in Miami", "Miami Rental Homes", 
+          "Apartments for Rent Miami", "Florida Realtor", "Florida Real Estate", 
+          "Real Estate Agent Florida", "Relocate to Florida", "Investment Property Miami", 
+          "Miami Property for Sale", "Best Realtor in Miami", "Buy Sell Relocate", 
+          "Serving All Florida", "Denizcan Kurt"
+        ]
       }
     },
     "contact": {
