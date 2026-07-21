@@ -328,5 +328,90 @@
       "messagePlaceholder": "Please describe your travel interests, tour dates, or real estate investment requirements...",
       "submitBtn": "Submit Inquiry",
       "submitting": "TRANSMITTING..."
+    },
+    "samyeli": {
+      "seo": {
+        "title": "Samyeli Pharmacy | Trusted English-Speaking Pharmacy in Kusadasi",
+        "description": "Reliable, English-speaking pharmacy in Kusadasi serving cruise passengers, tourists, and locals. On-duty information and a wide range of health products."
+      },
+      "hero": {
+        "preTitle": "KUSADASI PHARMACY GUIDE",
+        "title1": "SAMYELI",
+        "title2": "PHARMACY",
+        "subtitle": "Kusadasi's Trusted and English-Speaking Pharmacy",
+        "desc1": "If you are looking for \"Kusadasi pharmacy\", \"pharmacy near me\", \"on-duty pharmacy Kusadasi\" or \"English speaking pharmacy Kusadasi\", Samyeli Pharmacy provides professional and reliable service.",
+        "desc2": "Thanks to our central location, we provide fast and convenient service to Kusadasi residents, cruise passengers, vacationers, and international guests.",
+        "desc3": "With our experienced pharmacist and friendly team, we aim to provide the right products and consultation for your health."
+      },
+      "whyUs": {
+        "title": "Why Choose Samyeli Pharmacy?",
+        "desc": "At Samyeli Pharmacy, we don't just sell medicine; we also provide health consultation services.",
+        "services": [
+          "Prescription medicines", "Over-the-counter medicines", "Vitamins", "Mineral supplements",
+          "Omega-3 products", "Magnesium products", "Collagen products", "Skincare products",
+          "Sunscreen", "Baby products", "Maternal care products", "Diabetes products",
+          "Blood pressure monitors", "Thermometers", "First aid supplies", "Travel health products"
+        ]
+      },
+      "onDuty": {
+        "title": "Looking for an On-Duty Pharmacy in Kusadasi?",
+        "desc1": "If you are searching Google for;",
+        "searches": ["Kusadasi on-duty pharmacy", "On-duty pharmacy today Kusadasi", "Open pharmacy Kusadasi", "24-hour pharmacy Kusadasi"],
+        "desc2": "Samyeli Pharmacy will guide you correctly. We are happy to help with on-duty pharmacy information even outside working hours."
+      },
+      "cruise": {
+        "title": "Pharmacy in Kusadasi for Cruise Passengers",
+        "desc1": "Every year thousands of cruise passengers visit Kusadasi. If you are looking for:",
+        "searches": ["Pharmacy near Kusadasi Port", "English Speaking Pharmacy", "Open Pharmacy Kusadasi", "Medicine in Turkey", "Pharmacy near Ephesus"],
+        "desc2": "Samyeli Pharmacy is one of the best choices in Kusadasi. Our friendly staff can communicate in English and help international visitors find the right medicines and healthcare products."
+      },
+      "ephesus": {
+        "title": "Pharmacy near Ephesus",
+        "desc1": "Many tourists visiting the Ancient City of Ephesus return to Kusadasi city center afterward. Samyeli Pharmacy is easily accessible for;",
+        "targets": ["Ephesus visitors", "Cruise passengers", "Hotel guests", "Vacationers"],
+        "desc2": "and other travelers passing through."
+      },
+      "products": {
+        "title": "Wide Range of Health Products",
+        "desc": "You can find many health products in our pharmacy. Popular products:",
+        "list": [
+          "Vitamin D", "Vitamin C", "Multivitamins", "Magnesium", "Omega-3", "Probiotics",
+          "Collagen", "Sun protection", "Allergy medicines", "Flu medicines", "Painkillers",
+          "Stomach medicines", "Throat sprays", "Mosquito repellents", "Sunburn creams",
+          "Baby diapers", "Mother and baby products"
+        ]
+      },
+      "tourists": {
+        "title": "Health Consultation for Tourists",
+        "desc1": "Many foreign visitors coming to Turkey want information about;",
+        "list": ["Over-the-counter medicines", "Stomach medicines", "Sunburn creams", "Allergy medicines", "Vitamins"],
+        "desc2": "At Samyeli Pharmacy, we help our guests choose the right products for their needs."
+      },
+      "contact": {
+        "title": "Easy Access & Contact",
+        "addressTitle": "Address",
+        "address": "Samyeli Pharmacy, Kusadasi / Aydin / Turkey",
+        "mapBtn": "Open in Google Maps",
+        "mapLink": "https://www.google.com/maps/place/Eczane+Samyeli/@37.8591315,27.2582594,17z/data=!3m1!4b1!4m6!3m5!1s0x14bea99f0002c563:0x9b31202d32e406c1!8m2!3d37.8591315!4d27.2608397!16s%2Fg%2F11fs2r3b_v",
+        "phoneTitle": "Phone",
+        "phone": "+90 256 614 21 11",
+        "wpTitle": "WhatsApp",
+        "wp": "+90 544 966 21 11",
+        "emailTitle": "Email",
+        "email": "bilgieczanesamyeli@gmail.com",
+        "web": "https://www.salmankurt.com/en/samyeli-pharmacy"
+      },
+      "footer": {
+        "title": "Your health is always our priority.",
+        "desc": "Whether you live in Kusadasi, are here for a short holiday, or are visiting our city via a cruise ship; Samyeli Pharmacy is by your side with reliable service, quality products, and professional consultation.",
+        "seoText": "You can easily find us on Google with these keywords:",
+        "keywords": [
+          "Kuşadası Eczane", "Kusadasi Pharmacy", "Pharmacy Near Kusadasi Port", 
+          "English Speaking Pharmacy Kusadasi", "Kuşadası Nöbetçi Eczane", 
+          "Open Pharmacy Kusadasi", "Medicine in Turkey", "Ephesus Pharmacy", 
+          "Vitamin Kusadasi", "Sunscreen Kusadasi", "Baby Products Kusadasi", 
+          "Health Products Kusadasi", "Pharmacy Near Me"
+        ]
+      }
     }
   }

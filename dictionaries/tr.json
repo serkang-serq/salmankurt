@@ -328,5 +328,90 @@
       "messagePlaceholder": "Lütfen ilgilendiğiniz tur tarihlerini, seyahat planlarınızı veya gayrimenkul yatırım gereksinimlerinizi detaylandırın...",
       "submitBtn": "TALEBİ GÖNDER",
       "submitting": "İLETİLİYOR..."
+    },
+    "samyeli": {
+      "seo": {
+        "title": "Samyeli Eczanesi | Kuşadası'nın Güvenilir ve İngilizce Konuşan Eczanesi",
+        "description": "Kuşadası merkezde kruvaziyer yolcularına, turistlere ve yerel halka hizmet veren, İngilizce konuşan güvenilir eczane. Nöbetçi eczane bilgileri ve geniş ürün yelpazesi."
+      },
+      "hero": {
+        "preTitle": "KUŞADASI ECZANE REHBERİ",
+        "title1": "SAMYELİ",
+        "title2": "ECZANESİ",
+        "subtitle": "Kuşadası'nın Güvenilir ve İngilizce Konuşan Eczanesi",
+        "desc1": "\"Kuşadası eczane\", \"Kuşadası pharmacy\", \"en yakın eczane\", \"Kuşadası nöbetçi eczane\" veya \"English speaking pharmacy Kusadasi\" arıyorsanız, Samyeli Eczanesi size profesyonel ve güvenilir hizmet sunmaktadır.",
+        "desc2": "Şehir merkezindeki konumumuz sayesinde hem Kuşadası'nda yaşayanlara hem de kruvaziyer yolcularına, tatilcilere ve yabancı misafirlere hızlı ve kolay hizmet veriyoruz.",
+        "desc3": "Deneyimli eczacımız ve güler yüzlü ekibimizle, sağlığınız için en doğru ürün ve danışmanlığı sunmayı amaçlıyoruz."
+      },
+      "whyUs": {
+        "title": "Neden Samyeli Eczanesi?",
+        "desc": "Samyeli Eczanesi olarak sadece ilaç satışı değil, aynı zamanda sağlık danışmanlığı hizmeti de sunuyoruz.",
+        "services": [
+          "Reçeteli ilaçlar", "Reçetesiz ilaçlar", "Vitaminler", "Mineral takviyeleri",
+          "Omega-3 ürünleri", "Magnezyum ürünleri", "Kolajen ürünleri", "Cilt bakım ürünleri",
+          "Güneş kremleri", "Bebek ürünleri", "Anne bakım ürünleri", "Diyabet ürünleri",
+          "Tansiyon ölçüm cihazları", "Ateş ölçerler", "İlk yardım malzemeleri", "Seyahat sağlığı ürünleri"
+        ]
+      },
+      "onDuty": {
+        "title": "Kuşadası'nda Nöbetçi Eczane Arıyorsanız",
+        "desc1": "Google'da;",
+        "searches": ["Kuşadası nöbetçi eczane", "Bugün nöbetçi eczane Kuşadası", "Açık eczane Kuşadası", "24 saat eczane Kuşadası"],
+        "desc2": "gibi aramalar yapıyorsanız, Samyeli Eczanesi size en doğru yönlendirmeyi yapacaktır. Çalışma saatleri dışında da nöbetçi eczane konusunda yardımcı olmaktan memnuniyet duyarız."
+      },
+      "cruise": {
+        "title": "Cruise Yolcuları İçin Pharmacy in Kusadasi",
+        "desc1": "Every year thousands of cruise passengers visit Kusadasi. If you are looking for:",
+        "searches": ["Pharmacy near Kusadasi Port", "English Speaking Pharmacy", "Open Pharmacy Kusadasi", "Medicine in Turkey", "Pharmacy near Ephesus"],
+        "desc2": "Samyeli Pharmacy is one of the best choices in Kusadasi. Our friendly staff can communicate in English and help international visitors find the right medicines and healthcare products."
+      },
+      "ephesus": {
+        "title": "Ephesus Yakınında Eczane",
+        "desc1": "Efes Antik Kenti'ni ziyaret eden birçok turist daha sonra Kuşadası merkezine dönmektedir. Samyeli Eczanesi;",
+        "targets": ["Ephesus ziyaretçileri", "Cruise yolcuları", "Otel misafirleri", "Tatilciler"],
+        "desc2": "için kolay ulaşılabilir konumdadır."
+      },
+      "products": {
+        "title": "Sağlık Ürünlerinde Geniş Ürün Yelpazesi",
+        "desc": "Eczanemizde birçok sağlık ürününü bulabilirsiniz. Popüler ürünler:",
+        "list": [
+          "Vitamin D", "Vitamin C", "Multivitaminler", "Magnezyum", "Omega-3", "Probiyotikler",
+          "Kolajen", "Güneş koruyucular", "Alerji ilaçları", "Grip ilaçları", "Ağrı kesiciler",
+          "Mide ilaçları", "Boğaz spreyleri", "Sivrisinek kovucular", "Güneş yanığı kremleri",
+          "Bebek bezleri", "Anne ve bebek ürünleri"
+        ]
+      },
+      "tourists": {
+        "title": "Turistler İçin Sağlık Danışmanlığı",
+        "desc1": "Türkiye'ye gelen birçok yabancı ziyaretçi;",
+        "list": ["Reçetesiz ilaçlar", "Mide ilaçları", "Güneş yanığı kremleri", "Alerji ilaçları", "Vitaminler"],
+        "desc2": "hakkında bilgi almak istemektedir. Samyeli Eczanesi olarak misafirlerimize doğru ürün seçimi konusunda yardımcı oluyoruz."
+      },
+      "contact": {
+        "title": "İletişim & Konum",
+        "addressTitle": "Adres",
+        "address": "Samyeli Eczanesi, Kuşadası / Aydın / Türkiye",
+        "mapBtn": "Google Maps'te Aç",
+        "mapLink": "https://www.google.com/maps/place/Eczane+Samyeli/@37.8591315,27.2582594,17z/data=!3m1!4b1!4m6!3m5!1s0x14bea99f0002c563:0x9b31202d32e406c1!8m2!3d37.8591315!4d27.2608397!16s%2Fg%2F11fs2r3b_v",
+        "phoneTitle": "Telefon",
+        "phone": "+90 256 614 21 11",
+        "wpTitle": "WhatsApp",
+        "wp": "+90 544 966 21 11",
+        "emailTitle": "E-posta",
+        "email": "bilgieczanesamyeli@gmail.com",
+        "web": "https://www.salmankurt.com/tr/samyeli-eczanesi"
+      },
+      "footer": {
+        "title": "Sağlığınız bizim için her zaman önceliklidir.",
+        "desc": "İster Kuşadası'nda yaşayan biri olun, ister kısa süreli tatil için gelmiş olun, ister kruvaziyer gemisiyle şehrimizi ziyaret ediyor olun; Samyeli Eczanesi güvenilir hizmeti, kaliteli ürünleri ve profesyonel danışmanlığıyla yanınızdadır.",
+        "seoText": "Google'da şu kelimelerle bizi kolayca bulabilirsiniz:",
+        "keywords": [
+          "Kuşadası Eczane", "Kuşadası Pharmacy", "Pharmacy Near Kusadasi Port", 
+          "English Speaking Pharmacy Kusadasi", "Kuşadası Nöbetçi Eczane", 
+          "Open Pharmacy Kusadasi", "Medicine in Turkey", "Ephesus Pharmacy", 
+          "Vitamin Kuşadası", "Güneş Kremi Kuşadası", "Bebek Ürünleri Kuşadası", 
+          "Sağlık Ürünleri Kuşadası", "En Yakın Eczane"
+        ]
+      }
     }
   }
