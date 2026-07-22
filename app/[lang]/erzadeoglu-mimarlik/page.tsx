@@ -92,8 +92,8 @@ export default async function ErzadeogluArchitecturePage({
       <header className="bg-[#0B2341] border-b-2 border-[#C9A227] sticky top-0 z-50 shadow-xl">
         <div className="max-w-[1200px] mx-auto py-4 px-6 lg:px-12 flex justify-between items-center">
           
-          {/* LOGO */}
-          <div className="relative w-56 h-16 sm:w-64 sm:h-20 lg:w-72 lg:h-20">
+          {/* LOGO - BEYAZ GLOW EKLENDİ, HOVER'DA SARI OLACAK */}
+          <div className="relative w-56 h-16 sm:w-64 sm:h-20 lg:w-72 lg:h-20 cursor-pointer transition-all duration-500 ease-out drop-shadow-[0_0_15px_rgba(255,255,255,0.6)] hover:drop-shadow-[0_0_25px_rgba(201,162,39,0.8)] hover:scale-105">
             <Image 
               src="/logoerza.png" 
               alt="Erzadeoğlu Mimarlık Logo" 
@@ -223,9 +223,7 @@ export default async function ErzadeogluArchitecturePage({
               {serviceCategories.map((service, idx) => (
                 <div key={idx} className="bg-white border border-[#0B2341]/10 p-6 sm:p-8 hover:shadow-xl transition-shadow flex flex-col h-full">
                   <h3 className="font-[family-name:var(--font-montserrat)] text-xl font-black uppercase text-[#0B2341] mb-3">{service.title}</h3>
-                  {/* Buradaki h-auto md:h-20 kaldırıldı, flex-grow eklendi. Metin artık serbestçe uzayabilir. */}
                   <p className="text-[#0B2341]/70 text-sm mb-6 leading-relaxed flex-grow">{service.desc}</p>
-                  {/* Çizgili listenin her zaman en alta hizalanması için mt-auto eklendi */}
                   <ul className="space-y-2 border-t border-[#0B2341]/10 pt-4 mt-auto">
                     {service.items.map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-xs font-bold text-[#0B2341]/80 uppercase tracking-wider">
