@@ -6,10 +6,18 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: 'en
   const resolvedParams = await params; 
   const lang = resolvedParams?.lang || "tr"; 
 
-  return { 
-    title: "Kuşadası Mimarlık Ofisi | Erzadeoğlu Mimarlık İnşaat", 
-    description: "Kuşadası merkezli Erzadeoğlu Mimarlık İnşaat; mimari proje, villa tasarımı ve akaryakıt istasyonu projelerinde profesyonel hizmet sunmaktadır.", 
-  }; 
+  const meta = {
+    tr: {
+      title: "Kuşadası Mimarlık Ofisi | Erzadeoğlu Mimarlık İnşaat", 
+      description: "Kuşadası merkezli Erzadeoğlu Mimarlık İnşaat; mimari proje, villa tasarımı ve akaryakıt istasyonu projelerinde profesyonel hizmet sunmaktadır."
+    },
+    en: {
+      title: "Kusadasi Architecture Office | Erzadeoglu Architecture", 
+      description: "Kusadasi-based Erzadeoglu Architecture provides professional services in architectural projects, villa design, and gas station construction."
+    }
+  };
+
+  return meta[lang]; 
 } 
 
 export default async function ErzadeogluArchitecturePage({ 
@@ -21,67 +29,209 @@ export default async function ErzadeogluArchitecturePage({
   const lang = resolvedParams?.lang || "tr"; 
 
   // ==========================================
-  // METİN VERİLERİ 
+  // METİN VERİLERİ (DİNAMİK ÇEVİRİ DESTEĞİ)
   // ==========================================
   const contactPhone = "+90 541 837 96 30";
   const contactPhoneClean = "+905418379630";
 
-  const whyWorkWithUs = [
-    "Alan kaybı önlenir.",
-    "İnşaat maliyetleri kontrol altına alınır.",
-    "Deprem yönetmeliklerine uygun projeler hazırlanır.",
-    "Belediye ruhsat süreçleri hızlanır.",
-    "Enerji verimliliği artırılır.",
-    "Yapının yatırım değeri yükselir.",
-    "Yaşam konforu maksimum seviyeye çıkar."
-  ];
+  const content = {
+    tr: {
+      headerBtn: "İLETİŞİME GEÇ",
+      heroSuperTitle: "Kuşadası Mimarlık Ofisi",
+      heroTitle1: "Erzadeoğlu Mimarlık",
+      heroTitle2: "İnşaat",
+      heroSubTitle: "Kuşadası'nda Profesyonel Mimarlık Hizmetleri",
+      heroP1: "Bir yapı yalnızca beton, çelik ve tuğladan oluşmaz. Başarılı bir proje; doğru planlama, estetik tasarım, mühendislik bilgisi ve yasal süreçlerin eksiksiz yönetilmesiyle hayat bulur.",
+      heroP2: "Erzadeoğlu Mimarlık İnşaat, Kuşadası merkezli mimarlık ofisi olarak konut projelerinden ticari yapılara, villa tasarımlarından akaryakıt istasyonlarının inşaat ve dönüşüm projelerine kadar geniş kapsamlı profesyonel mimarlık hizmetleri sunmaktadır.",
+      heroP3: "Her projede önceliğimiz; estetik, güvenlik, fonksiyonellik ve uzun yıllar değerini koruyan yapılar üretmektir.",
+      
+      whyWorkWithUsTitle1: "Neden Profesyonel Bir",
+      whyWorkWithUsTitle2: "Mimarla",
+      whyWorkWithUsTitle3: "Çalışmalısınız?",
+      whyWorkWithUsDesc: "Bir binanın doğru planlanması yalnızca güzel görünmesini sağlamaz.",
+      whyWorkWithUsSubTitle: "Profesyonel mimarlık hizmeti sayesinde;",
+      whyWorkWithUsList: [
+        "Alan kaybı önlenir.",
+        "İnşaat maliyetleri kontrol altına alınır.",
+        "Deprem yönetmeliklerine uygun projeler hazırlanır.",
+        "Belediye ruhsat süreçleri hızlanır.",
+        "Enerji verimliliği artırılır.",
+        "Yapının yatırım değeri yükselir.",
+        "Yaşam konforu maksimum seviyeye çıkar."
+      ],
+      whyWorkWithUsFooter: "İyi hazırlanmış bir mimari proje, yıllarca kullanılacak bir yatırımın temelidir.",
+      
+      servicesSuperTitle: "Erzadeoğlu Mimarlık İnşaat'ın Hizmetleri",
+      servicesTitle1: "KAPSAMLI",
+      servicesTitle2: "MİMARİ ÇÖZÜMLER",
+      serviceCategories: [
+        {
+          title: "Mimari Proje Tasarımı",
+          desc: "Her arsa ve her müşteri farklıdır. Bu nedenle tüm projeler müşterinin ihtiyaçlarına özel olarak hazırlanır.",
+          items: ["Mimari proje çizimi", "3D görselleştirme", "Konsept tasarım", "Uygulama projeleri", "Belediye ruhsat projeleri", "Tadilat projeleri", "Restorasyon projeleri", "İç mekân planlaması"]
+        },
+        {
+          title: "Villa Projeleri",
+          desc: "Kuşadası ve çevresi son yıllarda villa yatırımları açısından büyük önem kazanmıştır. Modern, Akdeniz, minimalist veya klasik mimari tarzlarda hazırlanan villa projelerimiz;",
+          items: ["Doğal ışığı maksimum kullanır", "Enerji tasarrufu sağlar", "Ferah yaşam alanları oluşturur", "Manzaradan en iyi şekilde faydalanır", "Estetik ve fonksiyonelliği bir araya getirir"]
+        },
+        {
+          title: "Konut Projeleri",
+          desc: "Tek ailelik evlerden apartman projelerine kadar tüm konut projeleri özenle tasarlanmaktadır.",
+          items: ["Deprem yönetmeliğine uygun", "Modern mimari anlayışla", "Kullanıcı ihtiyaçları dikkate alınarak tasarlanmaktadır"]
+        },
+        {
+          title: "Tadilat ve Yenileme Projeleri",
+          desc: "Eski yapıların modern yaşam ihtiyaçlarına uygun hale getirilmesi büyük uzmanlık ister.",
+          items: ["Alan optimizasyonu", "Modern cephe tasarımları", "İç mekân yenilemeleri", "Mutfak ve banyo projeleri", "Ofis dönüşümleri", "Ticari alan yenilemeleri"]
+        }
+      ],
+      
+      gasStationSuperTitle: "Uzmanlık Alanımız",
+      gasStationTitle: "Akaryakıt İstasyonu İnşaat ve Dönüşüm Projeleri",
+      gasStationDesc: "Erzadeoğlu Mimarlık İnşaat'ın uzmanlık alanlarından biri de akaryakıt istasyonlarıdır. Sektöre özel teknik bilgi ve deneyim sayesinde projeler hem güvenlik standartlarına hem de ilgili mevzuata uygun şekilde hazırlanmaktadır.",
+      gasStationSubTitle: "Sunulan Hizmetler:",
+      gasStationServices: [
+        "Yeni akaryakıt istasyonu projeleri", "İstasyon dönüşüm projeleri", "Market alanları",
+        "İdari bina tasarımları", "Araç sirkülasyon planlaması", "Ruhsat projeleri", "Yenileme ve modernizasyon çalışmaları"
+      ],
 
-  const serviceCategories = [
-    {
-      title: "Mimari Proje Tasarımı",
-      desc: "Her arsa ve her müşteri farklıdır. Bu nedenle tüm projeler müşterinin ihtiyaçlarına özel olarak hazırlanır.",
-      items: ["Mimari proje çizimi", "3D görselleştirme", "Konsept tasarım", "Uygulama projeleri", "Belediye ruhsat projeleri", "Tadilat projeleri", "Restorasyon projeleri", "İç mekân planlaması"]
+      qualityTitle: "Mimari Tasarımda Kalite Anlayışımız",
+      qualityDesc: "Başarılı bir proje yalnızca güzel görünmekle kalmaz. Aynı zamanda;",
+      qualityPoints: ["Güvenli", "Dayanıklı", "Ekonomik", "Fonksiyonel", "Çevre dostu", "Estetik"],
+      qualityFooter: "Bu anlayış tüm projelerimizin temelini oluşturmaktadır.",
+      
+      selectionTitle: "Kuşadası'nda Mimarlık Hizmeti Alırken Nelere Dikkat Etmelisiniz?",
+      selectionDesc: "Bir mimarlık ofisi seçerken şu kriterler önemlidir:",
+      selectionCriteria: [
+        "Deneyim", "Referans projeler", "Teknik bilgi", "Belediye süreçlerine hâkimiyet", 
+        "Güncel yönetmelik bilgisi", "Güçlü iletişim", "Şeffaf çalışma sistemi", "Zamanında teslim"
+      ],
+      selectionFooter1: "Doğru ekip ile çalışmak hem",
+      selectionFooter2: "zaman",
+      selectionFooter3: "hem de",
+      selectionFooter4: "maliyet",
+      selectionFooter5: "açısından büyük avantaj sağlar.",
+
+      faqTitle: "Sık Sorulan Sorular",
+      faqs: [
+        { q: "Mimari proje ne kadar sürer?", a: "Projenin büyüklüğüne göre süre değişmekle birlikte süreç ilk görüşmenin ardından planlanır." },
+        { q: "Belediye ruhsat projeleri hazırlanıyor mu?", a: "Evet. Ruhsat süreçleri için gerekli mimari projeler hazırlanmakta ve ilgili prosedürlerde destek verilmektedir." },
+        { q: "Sadece Kuşadası'nda mı hizmet veriyorsunuz?", a: "Hayır. İhtiyaca göre Aydın ve çevre illerde de proje hizmeti sunulmaktadır." },
+        { q: "Akaryakıt istasyonu projeleri hazırlıyor musunuz?", a: "Evet. Yeni akaryakıt istasyonu projeleri, dönüşüm ve yenileme çalışmaları uzmanlık alanlarımız arasındadır." }
+      ],
+
+      contactP: "Hayalinizdeki yaşam alanlarını estetik, güvenli ve sürdürülebilir çözümlerle hayata geçirmek için profesyonel destek alabilirsiniz. Kaliteli mimari çözümler, modern tasarım anlayışı ve profesyonel proje yönetimiyle, yaşam alanlarınıza değer katıyoruz.",
+      contactServiceAreasTitle: "Hizmet Alanlarımız",
+      serviceAreasList: [
+        "Mimari Proje", "Villa Tasarımı", "Konut Projeleri", "Akaryakıt İstasyonu İnşaat ve Dönüşüm",
+        "Tadilat Projeleri", "3D Mimari Görselleştirme", "Ruhsat Projeleri", "İç Mekân Tasarımı"
+      ],
+      contactInfoTitle: "İletişim Bilgileri",
+      contactAddress: "Camikebir Mahallesi Vahit Kutal Sokak No:1 Kat:1/1, Kuşadası / Aydın",
+      contactArchitect: "Mimar: Bayram Ali Erzadeoğlu",
+      contactBtn: "📱 WhatsApp / Telefon:"
     },
-    {
-      title: "Villa Projeleri",
-      desc: "Kuşadası ve çevresi son yıllarda villa yatırımları açısından büyük önem kazanmıştır. Modern, Akdeniz, minimalist veya klasik mimari tarzlarda hazırlanan villa projelerimiz;",
-      items: ["Doğal ışığı maksimum kullanır", "Enerji tasarrufu sağlar", "Ferah yaşam alanları oluşturur", "Manzaradan en iyi şekilde faydalanır", "Estetik ve fonksiyonelliği bir araya getirir"]
-    },
-    {
-      title: "Konut Projeleri",
-      desc: "Tek ailelik evlerden apartman projelerine kadar tüm konut projeleri özenle tasarlanmaktadır.",
-      items: ["Deprem yönetmeliğine uygun", "Modern mimari anlayışla", "Kullanıcı ihtiyaçları dikkate alınarak tasarlanmaktadır"]
-    },
-    {
-      title: "Tadilat ve Yenileme Projeleri",
-      desc: "Eski yapıların modern yaşam ihtiyaçlarına uygun hale getirilmesi büyük uzmanlık ister.",
-      items: ["Alan optimizasyonu", "Modern cephe tasarımları", "İç mekân yenilemeleri", "Mutfak ve banyo projeleri", "Ofis dönüşümleri", "Ticari alan yenilemeleri"]
+    en: {
+      headerBtn: "CONTACT US",
+      heroSuperTitle: "Kusadasi Architecture Office",
+      heroTitle1: "Erzadeoglu Architecture",
+      heroTitle2: "Construction",
+      heroSubTitle: "Professional Architecture Services in Kusadasi",
+      heroP1: "A building is not just made of concrete, steel, and brick. A successful project comes to life with proper planning, aesthetic design, engineering knowledge, and complete management of legal processes.",
+      heroP2: "Erzadeoglu Architecture & Construction, as a Kusadasi-based architectural office, offers comprehensive professional architectural services ranging from residential projects to commercial buildings, from villa designs to the construction and transformation of gas stations.",
+      heroP3: "Our priority in every project is to produce aesthetic, secure, and functional structures that maintain their value for many years.",
+      
+      whyWorkWithUsTitle1: "Why Work With a",
+      whyWorkWithUsTitle2: "Professional Architect?",
+      whyWorkWithUsTitle3: "",
+      whyWorkWithUsDesc: "Proper planning of a building doesn't just make it look good.",
+      whyWorkWithUsSubTitle: "Thanks to professional architectural services;",
+      whyWorkWithUsList: [
+        "Prevents space loss.",
+        "Controls construction costs.",
+        "Prepares projects compliant with earthquake regulations.",
+        "Accelerates municipal licensing processes.",
+        "Increases energy efficiency.",
+        "Increases the investment value of the building.",
+        "Maximizes living comfort."
+      ],
+      whyWorkWithUsFooter: "A well-prepared architectural project is the foundation of an investment that will be used for years.",
+      
+      servicesSuperTitle: "Services of Erzadeoglu Architecture",
+      servicesTitle1: "COMPREHENSIVE",
+      servicesTitle2: "ARCHITECTURAL SOLUTIONS",
+      serviceCategories: [
+        {
+          title: "Architectural Project Design",
+          desc: "Every plot and every client is different. Therefore, all projects are tailored specifically to the client's needs.",
+          items: ["Architectural project drawing", "3D visualization", "Concept design", "Application projects", "Municipal license projects", "Renovation projects", "Restoration projects", "Interior planning"]
+        },
+        {
+          title: "Villa Projects",
+          desc: "Kusadasi and its surroundings have gained great importance in terms of villa investments in recent years. Our villa projects, designed in modern, Mediterranean, minimalist, or classic styles;",
+          items: ["Maximize natural light", "Save energy", "Create spacious living areas", "Make the best use of the view", "Combine aesthetics and functionality"]
+        },
+        {
+          title: "Residential Projects",
+          desc: "All residential projects, from single-family homes to apartment complexes, are carefully designed.",
+          items: ["Compliant with earthquake regulations", "With a modern architectural approach", "Designed considering user needs"]
+        },
+        {
+          title: "Renovation and Restoration Projects",
+          desc: "Adapting old structures to modern living needs requires great expertise.",
+          items: ["Space optimization", "Modern facade designs", "Interior renovations", "Kitchen and bathroom projects", "Office transformations", "Commercial space renovations"]
+        }
+      ],
+      
+      gasStationSuperTitle: "Our Area of Expertise",
+      gasStationTitle: "Gas Station Construction and Transformation Projects",
+      gasStationDesc: "One of the areas of expertise of Erzadeoglu Architecture is gas stations. Thanks to sector-specific technical knowledge and experience, projects are prepared in accordance with both safety standards and relevant legislation.",
+      gasStationSubTitle: "Services Offered:",
+      gasStationServices: [
+        "New gas station projects", "Station transformation projects", "Market areas",
+        "Administrative building designs", "Vehicle circulation planning", "Licensing projects", "Renovation and modernization works"
+      ],
+
+      qualityTitle: "Our Quality Understanding in Architectural Design",
+      qualityDesc: "A successful project is not only beautiful. It is also;",
+      qualityPoints: ["Safe", "Durable", "Economical", "Functional", "Eco-friendly", "Aesthetic"],
+      qualityFooter: "This understanding forms the basis of all our projects.",
+      
+      selectionTitle: "What Should You Consider When Getting Architecture Services in Kusadasi?",
+      selectionDesc: "When choosing an architecture office, these criteria are important:",
+      selectionCriteria: [
+        "Experience", "Reference projects", "Technical knowledge", "Mastery of municipal processes", 
+        "Up-to-date regulation knowledge", "Strong communication", "Transparent working system", "On-time delivery"
+      ],
+      selectionFooter1: "Working with the right team provides a great advantage in terms of both",
+      selectionFooter2: "time",
+      selectionFooter3: "and",
+      selectionFooter4: "cost",
+      selectionFooter5: ".",
+
+      faqTitle: "Frequently Asked Questions",
+      faqs: [
+        { q: "How long does an architectural project take?", a: "Although the duration varies depending on the size of the project, the process is planned after the initial consultation." },
+        { q: "Are municipal license projects prepared?", a: "Yes. Architectural projects required for licensing processes are prepared and support is provided in relevant procedures." },
+        { q: "Do you only serve in Kusadasi?", a: "No. Project services are also provided in Aydin and surrounding provinces according to the needs." },
+        { q: "Do you prepare gas station projects?", a: "Yes. New gas station projects, transformation, and renovation works are among our areas of expertise." }
+      ],
+
+      contactP: "You can get professional support to bring your dream living spaces to life with aesthetic, safe, and sustainable solutions. We add value to your living spaces with quality architectural solutions, a modern design approach, and professional project management.",
+      contactServiceAreasTitle: "Our Service Areas",
+      serviceAreasList: [
+        "Architectural Project", "Villa Design", "Residential Projects", "Gas Station Construction & Transformation",
+        "Renovation Projects", "3D Architectural Visualization", "Licensing Projects", "Interior Design"
+      ],
+      contactInfoTitle: "Contact Information",
+      contactAddress: "Camikebir District Vahit Kutal Street No:1 Floor:1/1, Kusadasi / Aydin",
+      contactArchitect: "Architect: Bayram Ali Erzadeoglu",
+      contactBtn: "📱 WhatsApp / Phone:"
     }
-  ];
+  };
 
-  const gasStationServices = [
-    "Yeni akaryakıt istasyonu projeleri", "İstasyon dönüşüm projeleri", "Market alanları",
-    "İdari bina tasarımları", "Araç sirkülasyon planlaması", "Ruhsat projeleri", "Yenileme ve modernizasyon çalışmaları"
-  ];
-
-  const qualityPoints = ["Güvenli", "Dayanıklı", "Ekonomik", "Fonksiyonel", "Çevre dostu", "Estetik"];
-
-  const selectionCriteria = [
-    "Deneyim", "Referans projeler", "Teknik bilgi", "Belediye süreçlerine hâkimiyet", 
-    "Güncel yönetmelik bilgisi", "Güçlü iletişim", "Şeffaf çalışma sistemi", "Zamanında teslim"
-  ];
-
-  const faqs = [
-    { q: "Mimari proje ne kadar sürer?", a: "Projenin büyüklüğüne göre süre değişmekle birlikte süreç ilk görüşmenin ardından planlanır." },
-    { q: "Belediye ruhsat projeleri hazırlanıyor mu?", a: "Evet. Ruhsat süreçleri için gerekli mimari projeler hazırlanmakta ve ilgili prosedürlerde destek verilmektedir." },
-    { q: "Sadece Kuşadası'nda mı hizmet veriyorsunuz?", a: "Hayır. İhtiyaca göre Aydın ve çevre illerde de proje hizmeti sunulmaktadır." },
-    { q: "Akaryakıt istasyonu projeleri hazırlıyor musunuz?", a: "Evet. Yeni akaryakıt istasyonu projeleri, dönüşüm ve yenileme çalışmaları uzmanlık alanlarımız arasındadır." }
-  ];
-
-  const serviceAreasList = [
-    "Mimari Proje", "Villa Tasarımı", "Konut Projeleri", "Akaryakıt İstasyonu İnşaat ve Dönüşüm",
-    "Tadilat Projeleri", "3D Mimari Görselleştirme", "Ruhsat Projeleri", "İç Mekân Tasarımı"
-  ];
+  const t = content[lang];
 
   return ( 
     <main className="bg-[#F8F8F8] min-h-screen text-[#0B2341] font-[family-name:var(--font-geist-sans)]"> 
@@ -115,7 +265,7 @@ export default async function ErzadeogluArchitecturePage({
               rel="noopener noreferrer" 
               className="bg-[#C9A227] text-[#0B2341] px-7 py-3 text-xs font-black uppercase tracking-widest hover:bg-white transition-colors duration-300"
             >
-              İLETİŞİME GEÇ
+              {t.headerBtn}
             </a>
           </div>
         </div>
@@ -134,18 +284,18 @@ export default async function ErzadeogluArchitecturePage({
           <div className="flex-1 text-center lg:text-left"> 
             <p className="text-[#C9A227] font-bold uppercase tracking-[0.2em] text-xs sm:text-sm mb-4 flex items-center justify-center lg:justify-start gap-4"> 
               <span className="hidden sm:block w-12 h-[2px] bg-[#C9A227]"></span> 
-              Kuşadası Mimarlık Ofisi
+              {t.heroSuperTitle}
             </p> 
             <h1 className="font-[family-name:var(--font-montserrat)] text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] mb-6"> 
-              Erzadeoğlu Mimarlık <span className="text-[#C9A227]">İnşaat</span>
+              {t.heroTitle1} <span className="text-[#C9A227]">{t.heroTitle2}</span>
             </h1>
             <h2 className="text-xl sm:text-2xl font-bold mb-6 tracking-wide text-white/90">
-              Kuşadası'nda Profesyonel Mimarlık Hizmetleri
+              {t.heroSubTitle}
             </h2> 
             <div className="text-base sm:text-lg font-light text-white/80 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8 border-l-4 border-[#C9A227] pl-4"> 
-              <p className="mb-4">Bir yapı yalnızca beton, çelik ve tuğladan oluşmaz. Başarılı bir proje; doğru planlama, estetik tasarım, mühendislik bilgisi ve yasal süreçlerin eksiksiz yönetilmesiyle hayat bulur.</p>
-              <p>Erzadeoğlu Mimarlık İnşaat, Kuşadası merkezli mimarlık ofisi olarak konut projelerinden ticari yapılara, villa tasarımlarından akaryakıt istasyonlarının inşaat ve dönüşüm projelerine kadar geniş kapsamlı profesyonel mimarlık hizmetleri sunmaktadır.</p>
-              <p className="mt-4 font-semibold text-white">Her projede önceliğimiz; estetik, güvenlik, fonksiyonellik ve uzun yıllar değerini koruyan yapılar üretmektir.</p>
+              <p className="mb-4">{t.heroP1}</p>
+              <p>{t.heroP2}</p>
+              <p className="mt-4 font-semibold text-white">{t.heroP3}</p>
             </div> 
           </div> 
 
@@ -175,17 +325,17 @@ export default async function ErzadeogluArchitecturePage({
 
           <div className="flex-1">
             <h2 className="font-[family-name:var(--font-montserrat)] text-3xl sm:text-4xl font-black uppercase tracking-tight text-[#0B2341] mb-6">
-              Neden Profesyonel Bir <span className="text-[#C9A227]">Mimarla</span> Çalışmalısınız?
+              {t.whyWorkWithUsTitle1} <span className="text-[#C9A227]">{t.whyWorkWithUsTitle2}</span> {t.whyWorkWithUsTitle3}
             </h2>
             <p className="text-[#0B2341]/80 text-lg mb-2 font-medium">
-              Bir binanın doğru planlanması yalnızca güzel görünmesini sağlamaz.
+              {t.whyWorkWithUsDesc}
             </p>
             <p className="text-[#C9A227] font-bold uppercase tracking-widest text-sm mb-8 pb-4 border-b border-[#0B2341]/10">
-              Profesyonel mimarlık hizmeti sayesinde;
+              {t.whyWorkWithUsSubTitle}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {whyWorkWithUs.map((reason, idx) => (
+              {t.whyWorkWithUsList.map((reason, idx) => (
                 <div key={idx} className="flex items-start gap-3 bg-[#F8F8F8] p-4 border border-[#0B2341]/5 hover:bg-[#0B2341] hover:text-white transition-colors group">
                   <span className="w-5 h-5 shrink-0 flex items-center justify-center bg-[#C9A227] text-[#0B2341] font-black text-[10px] mt-0.5">✓</span>
                   <span className="font-bold text-sm text-[#0B2341]/90 group-hover:text-white">{reason}</span>
@@ -194,7 +344,7 @@ export default async function ErzadeogluArchitecturePage({
             </div>
             <div className="mt-8 p-6 bg-[#0B2341] text-white border-l-4 border-[#C9A227]">
               <p className="text-sm uppercase tracking-widest font-bold">
-                İyi hazırlanmış bir mimari proje, yıllarca kullanılacak bir yatırımın temelidir.
+                {t.whyWorkWithUsFooter}
               </p>
             </div>
           </div>
@@ -202,14 +352,14 @@ export default async function ErzadeogluArchitecturePage({
       </section>
 
       {/* ==========================================
-          3. HİZMETLERİMİZ (mimarlik3.png) - DÜZELTİLEN KISIM
+          3. HİZMETLERİMİZ (mimarlik3.png)
       ========================================== */} 
       <section className="py-24 px-6 lg:px-12 bg-[#F8F8F8] border-y border-[#0B2341]/5"> 
         <div className="max-w-[1200px] mx-auto"> 
           <div className="text-center mb-16"> 
-            <p className="text-[#C9A227] font-bold uppercase tracking-[0.2em] text-sm mb-4">Erzadeoğlu Mimarlık İnşaat'ın Hizmetleri</p>
+            <p className="text-[#C9A227] font-bold uppercase tracking-[0.2em] text-sm mb-4">{t.servicesSuperTitle}</p>
             <h2 className="font-[family-name:var(--font-montserrat)] text-3xl md:text-5xl font-black uppercase tracking-tight text-[#0B2341] mb-6"> 
-              KAPSAMLI <span className="text-[#C9A227]">MİMARİ ÇÖZÜMLER</span>
+              {t.servicesTitle1} <span className="text-[#C9A227]">{t.servicesTitle2}</span>
             </h2> 
             <div className="h-1 w-24 bg-[#C9A227] mx-auto"></div> 
           </div> 
@@ -220,7 +370,7 @@ export default async function ErzadeogluArchitecturePage({
             </div>
 
             <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
-              {serviceCategories.map((service, idx) => (
+              {t.serviceCategories.map((service, idx) => (
                 <div key={idx} className="bg-white border border-[#0B2341]/10 p-6 sm:p-8 hover:shadow-xl transition-shadow flex flex-col h-full">
                   <h3 className="font-[family-name:var(--font-montserrat)] text-xl font-black uppercase text-[#0B2341] mb-3">{service.title}</h3>
                   <p className="text-[#0B2341]/70 text-sm mb-6 leading-relaxed flex-grow">{service.desc}</p>
@@ -245,17 +395,17 @@ export default async function ErzadeogluArchitecturePage({
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           <div>
-            <p className="text-[#C9A227] font-bold uppercase tracking-[0.2em] text-sm mb-4">Uzmanlık Alanımız</p>
+            <p className="text-[#C9A227] font-bold uppercase tracking-[0.2em] text-sm mb-4">{t.gasStationSuperTitle}</p>
             <h2 className="font-[family-name:var(--font-montserrat)] text-3xl sm:text-4xl font-black uppercase tracking-tight mb-6">
-              Akaryakıt İstasyonu İnşaat ve Dönüşüm Projeleri
+              {t.gasStationTitle}
             </h2>
             <p className="text-white/80 leading-relaxed mb-8">
-              Erzadeoğlu Mimarlık İnşaat'ın uzmanlık alanlarından biri de akaryakıt istasyonlarıdır. Sektöre özel teknik bilgi ve deneyim sayesinde projeler hem güvenlik standartlarına hem de ilgili mevzuata uygun şekilde hazırlanmaktadır.
+              {t.gasStationDesc}
             </p>
             
-            <p className="font-bold text-[#C9A227] tracking-widest uppercase text-xs mb-6">Sunulan Hizmetler:</p>
+            <p className="font-bold text-[#C9A227] tracking-widest uppercase text-xs mb-6">{t.gasStationSubTitle}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {gasStationServices.map((item, idx) => (
+              {t.gasStationServices.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 hover:border-[#C9A227] transition-colors">
                   <span className="w-2 h-2 bg-[#C9A227] shrink-0"></span>
                   <span className="text-xs font-bold uppercase tracking-wider">{item}</span>
@@ -280,16 +430,16 @@ export default async function ErzadeogluArchitecturePage({
           <div className="lg:col-span-4 space-y-12">
             <div>
               <h2 className="font-[family-name:var(--font-montserrat)] text-2xl font-black uppercase tracking-tight text-[#0B2341] mb-4">
-                Mimari Tasarımda Kalite Anlayışımız
+                {t.qualityTitle}
               </h2>
-              <p className="text-[#0B2341]/70 text-sm mb-4">Başarılı bir proje yalnızca güzel görünmekle kalmaz. Aynı zamanda;</p>
+              <p className="text-[#0B2341]/70 text-sm mb-4">{t.qualityDesc}</p>
               <div className="flex flex-wrap gap-2 mb-4">
-                {qualityPoints.map((pt, idx) => (
+                {t.qualityPoints.map((pt, idx) => (
                   <span key={idx} className="px-3 py-1 bg-[#0B2341] text-white text-xs font-bold uppercase tracking-widest">{pt}</span>
                 ))}
               </div>
               <p className="text-xs font-bold text-[#C9A227] uppercase tracking-widest border-l-2 border-[#C9A227] pl-3">
-                Bu anlayış tüm projelerimizin temelini oluşturmaktadır.
+                {t.qualityFooter}
               </p>
             </div>
 
@@ -300,12 +450,12 @@ export default async function ErzadeogluArchitecturePage({
 
           <div className="lg:col-span-8 bg-[#F8F8F8] p-8 sm:p-12 border border-[#0B2341]/5">
             <h2 className="font-[family-name:var(--font-montserrat)] text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#0B2341] mb-6">
-              Kuşadası'nda Mimarlık Hizmeti Alırken Nelere Dikkat Etmelisiniz?
+              {t.selectionTitle}
             </h2>
-            <p className="text-[#0B2341]/70 mb-8">Bir mimarlık ofisi seçerken şu kriterler önemlidir:</p>
+            <p className="text-[#0B2341]/70 mb-8">{t.selectionDesc}</p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-10">
-              {selectionCriteria.map((criteria, idx) => (
+              {t.selectionCriteria.map((criteria, idx) => (
                 <div key={idx} className="flex items-center gap-3 border-b border-[#0B2341]/10 pb-3">
                   <span className="text-[#C9A227] text-lg">✦</span>
                   <span className="font-bold text-sm uppercase tracking-wide text-[#0B2341]">{criteria}</span>
@@ -315,7 +465,7 @@ export default async function ErzadeogluArchitecturePage({
 
             <div className="bg-[#0B2341] p-6 text-center text-white">
               <p className="font-bold text-sm tracking-widest">
-                Doğru ekip ile çalışmak hem <span className="text-[#C9A227]">zaman</span> hem de <span className="text-[#C9A227]">maliyet</span> açısından büyük avantaj sağlar.
+                {t.selectionFooter1} <span className="text-[#C9A227]">{t.selectionFooter2}</span> {t.selectionFooter3} <span className="text-[#C9A227]">{t.selectionFooter4}</span> {t.selectionFooter5}
               </p>
             </div>
           </div>
@@ -330,13 +480,13 @@ export default async function ErzadeogluArchitecturePage({
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-12"> 
             <h2 className="font-[family-name:var(--font-montserrat)] text-3xl font-black uppercase tracking-tight text-[#0B2341] mb-4"> 
-              Sık Sorulan Sorular 
+              {t.faqTitle}
             </h2> 
             <div className="h-1 w-16 bg-[#C9A227] mx-auto"></div> 
           </div> 
 
           <div className="space-y-4">
-            {faqs.map((faq, idx) => (
+            {t.faqs.map((faq, idx) => (
               <div key={idx} className="bg-white border border-[#0B2341]/10 p-6 hover:border-[#C9A227] transition-colors">
                 <h3 className="font-bold text-[#0B2341] text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
                   <span className="text-[#C9A227]">Q.</span> {faq.q}
@@ -360,16 +510,16 @@ export default async function ErzadeogluArchitecturePage({
           
           <div className="space-y-8">
             <h2 className="font-[family-name:var(--font-montserrat)] text-3xl md:text-5xl font-black uppercase tracking-tight">
-              Erzadeoğlu Mimarlık <span className="text-[#C9A227]">İnşaat</span>
+              {t.heroTitle1} <span className="text-[#C9A227]">{t.heroTitle2}</span>
             </h2>
             <p className="text-lg text-white/80 leading-relaxed border-l-4 border-[#C9A227] pl-4">
-              Hayalinizdeki yaşam alanlarını estetik, güvenli ve sürdürülebilir çözümlerle hayata geçirmek için profesyonel destek alabilirsiniz. Kaliteli mimari çözümler, modern tasarım anlayışı ve profesyonel proje yönetimiyle, yaşam alanlarınıza değer katıyoruz.
+              {t.contactP}
             </p>
 
             <div>
-              <p className="text-[#C9A227] font-bold uppercase tracking-widest text-xs mb-4">Hizmet Alanlarımız</p>
+              <p className="text-[#C9A227] font-bold uppercase tracking-widest text-xs mb-4">{t.contactServiceAreasTitle}</p>
               <div className="flex flex-wrap gap-2">
-                {serviceAreasList.map((area, idx) => (
+                {t.serviceAreasList.map((area, idx) => (
                   <span key={idx} className="bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest">{area}</span>
                 ))}
               </div>
@@ -381,17 +531,17 @@ export default async function ErzadeogluArchitecturePage({
               <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             </div>
             
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#C9A227] mb-2">İletişim Bilgileri</p>
-            <h3 className="font-[family-name:var(--font-montserrat)] text-2xl font-black uppercase tracking-tight mb-8">Erzadeoğlu Mimarlık İnşaat</h3>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#C9A227] mb-2">{t.contactInfoTitle}</p>
+            <h3 className="font-[family-name:var(--font-montserrat)] text-2xl font-black uppercase tracking-tight mb-8">{t.heroTitle1} {t.heroTitle2}</h3>
             
             <ul className="space-y-6 mb-10">
               <li className="flex items-start gap-4 border-b border-[#0B2341]/10 pb-4">
                 <span className="text-xl">📍</span>
-                <span className="text-sm font-medium">Camikebir Mahallesi Vahit Kutal Sokak No:1 Kat:1/1, Kuşadası / Aydın</span>
+                <span className="text-sm font-medium">{t.contactAddress}</span>
               </li>
               <li className="flex items-center gap-4 border-b border-[#0B2341]/10 pb-4">
                 <span className="text-xl">👤</span>
-                <span className="text-sm font-bold uppercase tracking-widest">Mimar: Bayram Ali Erzadeoğlu</span>
+                <span className="text-sm font-bold uppercase tracking-widest">{t.contactArchitect}</span>
               </li>
             </ul>
 
@@ -401,7 +551,7 @@ export default async function ErzadeogluArchitecturePage({
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 w-full py-5 bg-[#C9A227] text-[#0B2341] font-black uppercase tracking-[0.15em] hover:bg-[#0B2341] hover:text-white transition-colors duration-300"
             >
-              📱 WhatsApp / Telefon: <br className="sm:hidden" /> {contactPhone}
+              {t.contactBtn} <br className="sm:hidden" /> {contactPhone}
             </a>
           </div>
 
