@@ -47,7 +47,7 @@ export default async function HomePage({
     },
     {
       name: "Denizcan Kurt",
-      href: "https://denizcankurt.com", 
+      href: `/${lang}/floridarealestate`, 
       isExternal: true,
       logo: "/logo22.png"
     },
