@@ -102,21 +102,25 @@ export default async function Footer({ lang }: { lang: "en" | "tr" }) {
             </div>
           </div>
 
-          {/* SÜTUN 3: USA OPERATIONS */}
+          {/* SÜTUN 3: USA OPERATIONS (TAM İSTENİLEN GİBİ ALT ALTA) */}
           <div>
             <h4 className="text-white font-bold uppercase tracking-[0.2em] text-[11px] mb-6 flex items-center gap-3">
               <span className="w-2 h-px bg-[#C9A227]"></span> {t.usaOperations}
             </h4>
-            <div className="text-xs font-light text-white/50 space-y-4 leading-relaxed">
-              <div>
-                <p className="text-white/80 font-medium mb-1">{t.globalHub}</p>
-                <p>5630 Cruz Road,<br />Jacksonville, FL 32207</p>
+            <div className="text-xs font-light text-white/50 space-y-6 leading-relaxed">
+              
+              {/* İsim ve Telefon Grubu (Alt Alta) */}
+              <div className="space-y-1">
+                <p className="text-white/80 font-medium block">Denizcan Kurt</p>
+                <a href="tel:+17542711175" className="block text-white hover:text-[#C9A227] transition-colors duration-300 font-medium">+1 (754) 271-1175</a>
               </div>
-              <div className="space-y-1.5 pt-2">
-                <a href="tel:+17542179239" className="block text-white hover:text-[#C9A227] transition-colors duration-300 font-medium">+1 754 217 9239</a>
+              
+              {/* Sea Drop Mailleri (Ayrı) */}
+              <div className="space-y-1.5 pt-2 border-t border-white/5">
                 <a href="mailto:info@seadroptravel.com" className="block hover:text-white transition-colors duration-300">info@seadroptravel.com</a>
                 <a href="mailto:salman@seadroptravel.com" className="block hover:text-white transition-colors duration-300">salman@seadroptravel.com</a>
               </div>
+
             </div>
           </div>
 
@@ -152,7 +156,6 @@ export default async function Footer({ lang }: { lang: "en" | "tr" }) {
             <span>&copy; {new Date().getFullYear()} Salman Kurt. {t.allRightsReserved}</span>
             <span className="hidden md:block w-1 h-1 bg-white/20 rounded-full"></span>
             
-            {/* POWERED BY KULLANILDI */}
             <span className="flex items-center gap-2">
               <span className="opacity-70">POWERED BY:</span>
               <a 

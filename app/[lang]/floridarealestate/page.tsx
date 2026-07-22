@@ -27,6 +27,10 @@ export default async function FloridaRealEstatePage({
   const dict = await getDictionary(lang as "en" | "tr"); 
   const t = dict.florida;
 
+  // Telefon numarasını koda sabitliyoruz
+  const phoneDisplay = "+1 (754) 271-1175";
+  const phoneLink = "+17542711175";
+
   return ( 
     <main className="bg-[#F8F8F8] min-h-screen text-[#0B2341]"> 
       
@@ -59,8 +63,8 @@ export default async function FloridaRealEstatePage({
             <p className="text-sm font-medium text-[#0B2341]/70 mb-8 border-b border-[#0B2341]/10 pb-6"> 
               {t.contactBlock.location}
             </p> 
-            <a href={`tel:${t.contactBlock.phone.replace(/[^0-9+]/g, '')}`} className="block w-full py-4 bg-[#0B2341] text-white text-center font-bold tracking-widest hover:bg-[#C9A227] hover:text-[#0B2341] transition-colors duration-300"> 
-              📞 {t.contactBlock.phone}
+            <a href={`tel:${phoneLink}`} className="block w-full py-4 bg-[#0B2341] text-white text-center font-bold tracking-widest hover:bg-[#C9A227] hover:text-[#0B2341] transition-colors duration-300"> 
+              📞 {phoneDisplay}
             </a> 
           </div> 
         </div> 
@@ -282,10 +286,10 @@ export default async function FloridaRealEstatePage({
             </p> 
             <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 sm:gap-6"> 
               <a 
-                href={`tel:${t.contactBlock.phone.replace(/[^0-9+]/g, '')}`} 
+                href={`tel:${phoneLink}`} 
                 className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#C9A227] text-[#0B2341] text-xs md:text-sm font-black uppercase tracking-[0.15em] transition-all duration-300 hover:bg-[#0B2341] hover:text-white shadow-lg" 
               > 
-                {t.contactBlock.phone} 
+                {phoneDisplay} 
               </a> 
               <Link 
                 href={`/${lang}/contact`} 
