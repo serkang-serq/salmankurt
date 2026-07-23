@@ -208,7 +208,7 @@ export default async function HomePage({
                 <LinkComponent
                   key={partner.name}
                   {...linkProps}
-                  className="group flex items-center justify-center h-[120px] bg-[#F8F9FA] border border-gray-100 transition-all duration-500 hover:bg-white hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 overflow-hidden px-8 py-6"
+                  className="group flex items-center justify-center h-[120px] bg-[#F8F9FA] border border-gray-100 transition-all duration-500 hover:bg-white hover:border-[#C9A227] hover:shadow-[0_0_25px_rgba(201,162,39,0.4)] hover:-translate-y-1 overflow-hidden px-8 py-6"
                   aria-label={`${partner.name} web sitesini ziyaret et`}
                 >
                   <div className="relative w-full h-full flex items-center justify-center">
@@ -217,7 +217,7 @@ export default async function HomePage({
                       alt={`${partner.name} Logo`}
                       fill
                       sizes="(max-width: 768px) 100vw, 25vw"
-                      className="object-contain filter grayscale opacity-50 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100"
+                      className="object-contain transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
                 </LinkComponent>
