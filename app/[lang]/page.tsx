@@ -49,7 +49,7 @@ export default async function HomePage({
       name: "Denizcan Kurt",
       href: `/${lang}/floridarealestate`, 
       isExternal: false,
-      logo: "/logo22.png"
+      logo: "/logo22.png" // İstediğin zaman denizcanlogoyeni.png yapabilirsin
     },
     {
       name: "Samyeli Eczanesi",
@@ -198,7 +198,7 @@ export default async function HomePage({
 
           {/* Alt Kısım: Hover efektli logo ızgarası */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {partnersData.map((partner) => {
+            {partnersData.map((partner, index) => {
               const LinkComponent = partner.isExternal ? "a" : Link;
               const linkProps = partner.isExternal
                 ? { href: partner.href, target: "_blank", rel: "noopener noreferrer" } 
@@ -208,7 +208,7 @@ export default async function HomePage({
                 <LinkComponent
                   key={partner.name}
                   {...linkProps}
-                  className="group flex items-center justify-center h-[120px] bg-[#F8F9FA] border border-gray-100 transition-all duration-500 hover:bg-white hover:border-[#C9A227] hover:shadow-[0_0_25px_rgba(201,162,39,0.4)] hover:-translate-y-1 overflow-hidden px-8 py-6"
+                  className="group flex items-center justify-center h-[160px] bg-[#F8F9FA] border border-gray-100 transition-all duration-500 hover:bg-white hover:border-[#C9A227] hover:shadow-[0_0_25px_rgba(201,162,39,0.4)] hover:-translate-y-1 px-8 py-6"
                   aria-label={`${partner.name} web sitesini ziyaret et`}
                 >
                   <div className="relative w-full h-full flex items-center justify-center">
@@ -217,7 +217,12 @@ export default async function HomePage({
                       alt={`${partner.name} Logo`}
                       fill
                       sizes="(max-width: 768px) 100vw, 25vw"
-                      className="object-contain transition-transform duration-500 group-hover:scale-110"
+                      // Büyüklükler dengelendi: Denizcan Kurt (index 1) 1.5 kat, diğerleri 1.1 kat
+                      className={`object-contain transition-transform duration-500 ${
+                        index === 1 
+                          ? "scale-150 group-hover:scale-[1.65]" 
+                          : "scale-110 group-hover:scale-125"
+                      }`}
                     />
                   </div>
                 </LinkComponent>
