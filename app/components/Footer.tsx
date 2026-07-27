@@ -102,25 +102,20 @@ export default async function Footer({ lang }: { lang: "en" | "tr" }) {
             </div>
           </div>
 
-          {/* SÜTUN 3: USA OPERATIONS (TAM İSTENİLEN GİBİ ALT ALTA) */}
+          {/* SÜTUN 3: USA OPERATIONS */}
           <div>
             <h4 className="text-white font-bold uppercase tracking-[0.2em] text-[11px] mb-6 flex items-center gap-3">
               <span className="w-2 h-px bg-[#C9A227]"></span> {t.usaOperations}
             </h4>
             <div className="text-xs font-light text-white/50 space-y-6 leading-relaxed">
-              
-              {/* İsim ve Telefon Grubu (Alt Alta) */}
               <div className="space-y-1">
                 <p className="text-white/80 font-medium block">Denizcan Kurt</p>
                 <a href="tel:+17542711175" className="block text-white hover:text-[#C9A227] transition-colors duration-300 font-medium">+1 (754) 271-1175</a>
               </div>
-              
-              {/* Sea Drop Mailleri (Ayrı) */}
               <div className="space-y-1.5 pt-2 border-t border-white/5">
                 <a href="mailto:info@seadroptravel.com" className="block hover:text-white transition-colors duration-300">info@seadroptravel.com</a>
                 <a href="mailto:salman@seadroptravel.com" className="block hover:text-white transition-colors duration-300">salman@seadroptravel.com</a>
               </div>
-
             </div>
           </div>
 
@@ -165,9 +160,12 @@ export default async function Footer({ lang }: { lang: "en" | "tr" }) {
                 title={lang === "tr" ? "Sea Drop Travel - Lüks Efes Turları" : "Sea Drop Travel - Luxury Ephesus Tours"}
                 className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
               >
+                {/* PERFORMANS/CLS FIX: Genişlik ve yükseklik değerleri atandı */}
                 <img 
                   src="/logo11.png" 
-                  alt="Sea Drop Travel Logo" 
+                  alt="Sea Drop Travel Logo"
+                  width="120"
+                  height="24"
                   className="h-5 md:h-6 w-auto object-contain"
                 />
                 <span className="text-[#C9A227] font-bold hidden sm:inline-block">SEA DROP TRAVEL</span>

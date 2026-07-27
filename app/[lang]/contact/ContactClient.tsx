@@ -39,7 +39,8 @@ export default function ContactClient({ dict }: { dict: any }) {
     <main className="bg-[#F8F8F8] min-h-screen text-[#0B2341]">
       <section className="pt-32 pb-16 px-6 lg:px-12">
         <div className="max-w-[1200px] mx-auto">
-          <p className="text-[#C9A227] font-bold uppercase tracking-[0.2em] text-sm mb-4">
+          {/* KONTRAST FIX */}
+          <p className="text-[#9E7F1D] font-bold uppercase tracking-[0.2em] text-sm mb-4">
             {dict.contact.heroSub}
           </p>
           <h1 className="font-[family-name:var(--font-montserrat)] text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-[#0B2341]">
@@ -55,7 +56,8 @@ export default function ContactClient({ dict }: { dict: any }) {
           
           <div className="lg:col-span-5 space-y-8">
             <div className="bg-white p-8 border border-[#0B2341]/5 shadow-sm border-l-4 border-[#C9A227]">
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#C9A227] block mb-2">
+              {/* KONTRAST FIX */}
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#9E7F1D] block mb-2">
                 {dict.contact.panel1Badge}
               </span>
               <h3 className="font-[family-name:var(--font-montserrat)] text-xl font-bold uppercase tracking-tight text-[#0B2341] mb-4">
@@ -120,13 +122,15 @@ export default function ContactClient({ dict }: { dict: any }) {
                     <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]/60">
                       {dict.contact.fullName}
                     </label>
-                    <input type="text" name="name" required placeholder={dict.contact.namePlaceholder} className="w-full bg-[#F8F8F8] border border-[#0B2341]/10 px-4 py-3 text-sm focus:outline-none focus:border-[#C9A227] transition-colors rounded-sm" />
+                    {/* ERİŞİLEBİLİRLİK FIX: aria-label eklendi */}
+                    <input type="text" name="name" required aria-label={dict.contact.fullName} placeholder={dict.contact.namePlaceholder} className="w-full bg-[#F8F8F8] border border-[#0B2341]/10 px-4 py-3 text-sm focus:outline-none focus:border-[#C9A227] transition-colors rounded-sm" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]/60">
                       {dict.contact.email}
                     </label>
-                    <input type="email" name="email" required placeholder={dict.contact.emailPlaceholder} className="w-full bg-[#F8F8F8] border border-[#0B2341]/10 px-4 py-3 text-sm focus:outline-none focus:border-[#C9A227] transition-colors rounded-sm" />
+                    {/* ERİŞİLEBİLİRLİK FIX: aria-label eklendi */}
+                    <input type="email" name="email" required aria-label={dict.contact.email} placeholder={dict.contact.emailPlaceholder} className="w-full bg-[#F8F8F8] border border-[#0B2341]/10 px-4 py-3 text-sm focus:outline-none focus:border-[#C9A227] transition-colors rounded-sm" />
                   </div>
                 </div>
 
@@ -150,7 +154,8 @@ export default function ContactClient({ dict }: { dict: any }) {
                   <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]/60">
                     {dict.contact.message}
                   </label>
-                  <textarea name="message" required rows={5} placeholder={dict.contact.messagePlaceholder} className="w-full bg-[#F8F8F8] border border-[#0B2341]/10 px-4 py-3 text-sm focus:outline-none focus:border-[#C9A227] transition-colors rounded-sm resize-none"></textarea>
+                  {/* ERİŞİLEBİLİRLİK FIX: aria-label eklendi */}
+                  <textarea name="message" required aria-label={dict.contact.message} rows={5} placeholder={dict.contact.messagePlaceholder} className="w-full bg-[#F8F8F8] border border-[#0B2341]/10 px-4 py-3 text-sm focus:outline-none focus:border-[#C9A227] transition-colors rounded-sm resize-none"></textarea>
                 </div>
 
                 <button 

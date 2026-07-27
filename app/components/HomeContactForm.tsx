@@ -77,13 +77,13 @@ export default function HomeContactForm({ lang }: { lang: "en" | "tr" }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div className="space-y-2">
           <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]/60">{t.fullName}</label>
-          {/* text-[#0B2341] EKLENDİ */}
-          <input type="text" name="name" required className="w-full bg-[#F8F8F8] text-[#0B2341] border border-transparent px-4 py-3 text-sm focus:outline-none focus:border-[#C9A227] transition-colors" />
+          {/* ERİŞİLEBİLİRLİK FIX: aria-label eklendi */}
+          <input type="text" name="name" required aria-label={t.fullName} className="w-full bg-[#F8F8F8] text-[#0B2341] border border-transparent px-4 py-3 text-sm focus:outline-none focus:border-[#C9A227] transition-colors" />
         </div>
         <div className="space-y-2">
           <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]/60">{t.email}</label>
-          {/* text-[#0B2341] EKLENDİ */}
-          <input type="email" name="email" required className="w-full bg-[#F8F8F8] text-[#0B2341] border border-transparent px-4 py-3 text-sm focus:outline-none focus:border-[#C9A227] transition-colors" />
+          {/* ERİŞİLEBİLİRLİK FIX: aria-label eklendi */}
+          <input type="email" name="email" required aria-label={t.email} className="w-full bg-[#F8F8F8] text-[#0B2341] border border-transparent px-4 py-3 text-sm focus:outline-none focus:border-[#C9A227] transition-colors" />
         </div>
       </div>
       <div className="space-y-3">
@@ -99,8 +99,8 @@ export default function HomeContactForm({ lang }: { lang: "en" | "tr" }) {
       </div>
       <div className="space-y-2">
         <label className="text-[10px] font-black uppercase tracking-widest text-[#0B2341]/60">{t.message}</label>
-        {/* text-[#0B2341] EKLENDİ */}
-        <textarea name="message" required rows={4} className="w-full bg-[#F8F8F8] text-[#0B2341] border border-transparent px-4 py-3 text-sm focus:outline-none focus:border-[#C9A227] transition-colors resize-none"></textarea>
+        {/* ERİŞİLEBİLİRLİK FIX: aria-label eklendi */}
+        <textarea name="message" required aria-label={t.message} rows={4} className="w-full bg-[#F8F8F8] text-[#0B2341] border border-transparent px-4 py-3 text-sm focus:outline-none focus:border-[#C9A227] transition-colors resize-none"></textarea>
       </div>
       <button type="submit" disabled={isSubmitting} className="w-full py-4 bg-[#C9A227] text-[#0B2341] text-xs font-black uppercase tracking-[0.2em] transition-all hover:bg-[#0B2341] hover:text-white">
         {isSubmitting ? t.submittingBtn : t.submitBtn}

@@ -37,7 +37,6 @@ export default async function HomePage({
 
   const blogs = await getLatestBlogs();
 
-  // YENİ EKLENEN KISIM: Eski düz metin partnerler yerine linkli ve logolu premium yapı eklendi
   const partnersData = [
     {
       name: "Sea Drop Travel",
@@ -49,7 +48,7 @@ export default async function HomePage({
       name: "Denizcan Kurt",
       href: `/${lang}/floridarealestate`, 
       isExternal: false,
-      logo: "/logo22.png" // İstediğin zaman denizcanlogoyeni.png yapabilirsin
+      logo: "/logo22.png" 
     },
     {
       name: "Samyeli Eczanesi",
@@ -149,7 +148,8 @@ export default async function HomePage({
         <div className="max-w-[1200px] mx-auto w-full z-10 xl:pl-12">
           <div className="flex items-center gap-4 mb-8">
             <div className="h-[1px] w-12 bg-[#C9A227]"></div>
-            <p className="text-[#C9A227] font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs">
+            {/* KONTRAST FIX: Açık zemindeki sarı koyulaştırıldı */}
+            <p className="text-[#9E7F1D] font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs">
               {dict.home.heroPreTitle}
             </p>
           </div>
@@ -177,14 +177,14 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* 2. GLOBAL PARTNERS (YENİ PREMIUM LOGO IZGARASI BÖLÜMÜ) */}
+      {/* 2. GLOBAL PARTNERS */}
       <section className="bg-white py-20 border-y border-[#0B2341]/10 px-6 lg:px-12 relative">
         <div className="max-w-[1400px] mx-auto">
           
-          {/* Üst Kısım: Başlık ve Ayırıcı Çizgi (Dictionary'e bağlandı) */}
           <div className="flex items-end gap-8 mb-12">
             <div className="shrink-0 text-left">
-              <h4 className="text-[#C9A227] text-xs font-bold tracking-[0.2em] uppercase mb-2">
+              {/* KONTRAST FIX */}
+              <h4 className="text-[#9E7F1D] text-xs font-bold tracking-[0.2em] uppercase mb-2">
                 {dict.home.partnersPreTitle}
               </h4>
               <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter font-[family-name:var(--font-montserrat)]">
@@ -192,11 +192,9 @@ export default async function HomePage({
                 <span className="text-[#B0B8C1]">{dict.home.partnersTitle2}</span>
               </h2>
             </div>
-            {/* Sağa uzayan ince editoryal çizgi */}
             <div className="hidden md:block flex-1 h-[1px] bg-gray-200 mb-2 md:mb-3"></div>
           </div>
 
-          {/* Alt Kısım: Hover efektli logo ızgarası */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {partnersData.map((partner, index) => {
               const LinkComponent = partner.isExternal ? "a" : Link;
@@ -217,7 +215,6 @@ export default async function HomePage({
                       alt={`${partner.name} Logo`}
                       fill
                       sizes="(max-width: 768px) 100vw, 25vw"
-                      // Büyüklükler dengelendi: Denizcan Kurt (index 1) 1.5 kat, diğerleri 1.1 kat
                       className={`object-contain transition-transform duration-500 ${
                         index === 1 
                           ? "scale-150 group-hover:scale-[1.65]" 
@@ -259,7 +256,8 @@ export default async function HomePage({
       <section className="py-16 px-6 lg:px-12 bg-[#F8F8F8]">
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-12 text-center md:text-left">
-            <p className="text-[#C9A227] font-bold uppercase tracking-[0.2em] text-xs mb-3">{dict.home.pillarsPreTitle}</p>
+            {/* KONTRAST FIX */}
+            <p className="text-[#9E7F1D] font-bold uppercase tracking-[0.2em] text-xs mb-3">{dict.home.pillarsPreTitle}</p>
             <h2 className="font-[family-name:var(--font-montserrat)] text-4xl md:text-5xl font-black uppercase tracking-tight text-[#0B2341]">{dict.home.pillarsTitle1} <span className="opacity-20">{dict.home.pillarsTitle2}</span></h2>
           </div>
 
@@ -268,7 +266,8 @@ export default async function HomePage({
             <div className="group bg-white p-10 md:p-14 border border-[#0B2341]/5 hover:border-[#C9A227] transition-all duration-700 shadow-sm relative overflow-hidden flex flex-col justify-between">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#0B2341]/5 rounded-bl-[150px] -z-0 transition-transform duration-700 group-hover:scale-[3.5]"></div>
               <div>
-                <span className="text-[#C9A227] text-xs font-black tracking-[0.3em] uppercase block mb-6 relative z-10">{dict.home.tourismPreTitle}</span>
+                {/* KONTRAST FIX */}
+                <span className="text-[#9E7F1D] text-xs font-black tracking-[0.3em] uppercase block mb-6 relative z-10">{dict.home.tourismPreTitle}</span>
                 <h3 className="font-[family-name:var(--font-montserrat)] text-3xl font-black uppercase tracking-tight mb-4 relative z-10 text-[#0B2341]">Sea Drop Travel</h3>
                 <p className="text-[#0B2341]/70 leading-relaxed mb-10 relative z-10 max-w-md font-light">
                   {dict.home.tourismDesc}
@@ -299,7 +298,8 @@ export default async function HomePage({
             <div className="grid grid-cols-1 lg:grid-cols-12">
               
               <div className="lg:col-span-5 p-10 md:p-14 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-[#0B2341]/5">
-                <span className="text-[#C9A227] text-xs font-black tracking-[0.3em] uppercase block mb-6">{dict.home.pharmacyPreTitle}</span>
+                {/* KONTRAST FIX */}
+                <span className="text-[#9E7F1D] text-xs font-black tracking-[0.3em] uppercase block mb-6">{dict.home.pharmacyPreTitle}</span>
                 <h3 className="font-[family-name:var(--font-montserrat)] text-3xl font-black uppercase tracking-tight mb-4 text-[#0B2341]">{dict.home.pharmacyTitle}</h3>
                 <p className="text-[#0B2341]/70 leading-relaxed mb-8 font-light">
                   {dict.home.pharmacyDesc}
@@ -353,7 +353,9 @@ export default async function HomePage({
             </div>
 
             <div className="relative w-full h-[300px] md:h-[400px] border-t border-[#0B2341]/10 group/map overflow-hidden bg-[#E5E5E5]">
+              {/* ERİŞİLEBİLİRLİK FIX: iframe title etiketi eklendi */}
               <iframe 
+                title="Samyeli Eczanesi Konum Haritası"
                 src="https://maps.google.com/maps?q=Samyeli+Eczanesi+Kusadasi&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                 className="absolute inset-0 w-full h-full grayscale opacity-80 group-hover/map:grayscale-0 group-hover/map:opacity-100 transition-all duration-1000 ease-in-out"
                 style={{ border: 0 }}
@@ -495,7 +497,8 @@ export default async function HomePage({
       <section className="py-16 px-6 lg:px-12 bg-[#F8F8F8] border-t border-[#0B2341]/5">
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-12">
-            <p className="text-[#C9A227] font-bold uppercase tracking-[0.2em] text-xs mb-3">{dict.home.faqPreTitle}</p>
+            {/* KONTRAST FIX */}
+            <p className="text-[#9E7F1D] font-bold uppercase tracking-[0.2em] text-xs mb-3">{dict.home.faqPreTitle}</p>
             <h2 className="font-[family-name:var(--font-montserrat)] text-4xl font-black uppercase tracking-tight text-[#0B2341]">{dict.home.faqTitle1} <span className="opacity-20">{dict.home.faqTitle2}</span></h2>
           </div>
 
