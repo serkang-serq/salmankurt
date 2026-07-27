@@ -3,19 +3,16 @@ import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { getDictionary } from "../../dictionaries/get-dictionary";
-import dynamic from "next/dynamic";
 
-// AĞIR BİLEŞENLERİ SSR'DAN (İLK YÜKLEMEDEN) ÇIKARIYORUZ
-const HomeContactForm = dynamic(() => import("../components/HomeContactForm"), {
-  ssr: false,
-});
-
-const LazyMap = dynamic(() => import("../components/LazyMap"), {
-  ssr: false,
-});
+// DİNAMİK İMPORTLARI İPTAL ETTİK, STANDART İMPORTA DÖNDÜK
+import HomeContactForm from "../components/HomeContactForm";
+import LazyMap from '../components/LazyMap';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
+
+async function getLatestBlogs() {
+// ... Dosyanın geri kalanı aynen kalacak
 
 async function getLatestBlogs() {
   const query = `*[_type == "post"] | order(publishedAt desc)[0...3] {
