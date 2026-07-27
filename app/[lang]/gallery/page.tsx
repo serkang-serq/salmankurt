@@ -1,6 +1,7 @@
 import { client } from "@/sanity/lib/client";
 import GalleryClient from "./GalleryClient";
 
+
 // Sekme başlıklarını (Metadata) dile göre dinamik yapıyoruz
 export async function generateMetadata({
   params,

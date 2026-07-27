@@ -4,6 +4,7 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import HomeContactForm from "../components/HomeContactForm";
 import { getDictionary } from "../../dictionaries/get-dictionary";
+import LazyMap from '../components/LazyMap';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
