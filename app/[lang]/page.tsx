@@ -3,16 +3,11 @@ import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { getDictionary } from "../../dictionaries/get-dictionary";
-
-// DİNAMİK İMPORTLARI İPTAL ETTİK, STANDART İMPORTA DÖNDÜK
 import HomeContactForm from "../components/HomeContactForm";
 import LazyMap from '../components/LazyMap';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
-
-async function getLatestBlogs() {
-// ... Dosyanın geri kalanı aynen kalacak
 
 async function getLatestBlogs() {
   const query = `*[_type == "post"] | order(publishedAt desc)[0...3] {
@@ -514,7 +509,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* 7. İLETİŞİM FORMU (DİNAMİK YÜKLENİYOR) */}
+      {/* 7. İLETİŞİM FORMU */}
       <section id="quick-contact" className="py-16 px-6 lg:px-12 bg-[#0B2341] text-white border-t-8 border-[#C9A227]">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
