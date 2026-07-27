@@ -94,7 +94,7 @@ export default function GalleryClient({
               {galleryItems.map((item: any, index: number) => {
                 const currentSeoKeyword = seoKeywords[index % seoKeywords.length];
                 
-                // Seçilen dile göre başlık ve kategoriyi belirliyoruz (Boş bırakılmışsa diğer dildekini veya varsayılanı çeker)
+                // Seçilen dile göre başlık ve kategoriyi belirliyoruz
                 const displayTitle = lang === 'tr' ? (item.title_tr || item.title_en) : (item.title_en || item.title_tr);
                 const displayCategory = lang === 'tr' ? (item.category_tr || item.category_en) : (item.category_en || item.category_tr);
                 
@@ -172,16 +172,19 @@ export default function GalleryClient({
           </button>
 
           <div 
-            className="relative w-[90vw] h-[70vh] md:h-[85vh] flex flex-col items-center justify-center" 
+            // BURASI GÜNCELLENDİ: Fotoğrafın kendi boyutunu alması ama ekrandan taşmaması sağlandı
+            className="relative flex flex-col items-center justify-center max-w-[90vw] max-h-[85vh]" 
             onClick={(e) => e.stopPropagation()}
           >
             {galleryItems[currentIndex]?.image?.asset && (
-              <div className="relative w-full h-full shadow-[0_0_50px_rgba(201,162,39,0.15)]">
+              <div className="relative flex items-center justify-center shadow-[0_0_50px_rgba(201,162,39,0.15)]">
+                {/* Next.js Image bileşeni fill yerine w-auto h-auto ve max boyutlarla sınırlandı */}
                 <Image
                   src={urlFor(galleryItems[currentIndex].image).url()}
                   alt={seoKeywords[currentIndex % seoKeywords.length]}
-                  fill
-                  className="object-contain"
+                  width={1920} // Yüksek çözünürlüklü referans (gerçek boyutuna göre küçülür)
+                  height={1080}
+                  className="w-auto h-auto max-w-[90vw] max-h-[70vh] md:max-h-[85vh] object-contain"
                 />
               </div>
             )}
